@@ -22,9 +22,10 @@
   --dimPurple: #47356C;
   --grey: #CBCDCD;
   --dimGrey: #646868;
-  --terminalBgColor: #333;
+  --terminalBgColor: #eaf4f4;
   --terminalFontColor: #D26878;
-  --terminalBodyColor: #EEEEEE;
+  --terminalBodyColor: #eaf4f4;
+  --terminalHeaderColor: #eaf4f4;
 }
 
 :root.dark {
@@ -53,6 +54,7 @@
   --terminalBgColor: #333;
   --terminalFontColor: #8F8F8F;
   --terminalBodyColor: #333;
+  --terminalHeaderColor: #333;
 }
 
 ::-moz-selection {
@@ -365,7 +367,7 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   height: 25px;
-  background-color: #333;
+  background-color: var(--terminalHeaderColor);
 }
 
 .terminal-buttons {
