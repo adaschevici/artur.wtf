@@ -79,11 +79,32 @@ body {
   font-family: monospace;
   font-size: 1.6rem;
   line-height: 1.35;
-  max-width: 64rem;
+  max-width: 100rem;
   margin: auto;
   overflow-wrap: break-word;
   background: var(--bgColor);
   color: var(--fgColor);
+}
+
+.body-with-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+
+.logo {
+  width: 20.5rem;
+  height: 20.5rem;
+  aspect-ratio: 1/1;
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--fgColor);
+  fill: var(--fgColor);
+  background-color: transparent;
+  padding-top: 10rem;
+}
+
+.img-logo {
+  border-radius: 100px;
 }
 
 h1 {
@@ -429,5 +450,14 @@ textarea {
 @media (max-width: 650px) {
   .wrapper {
     margin: 1rem;
+  }
+
+  .logo {
+    padding-left: 28%
+  }
+
+  .body-with-sidebar {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 10fr;
   }
 }
