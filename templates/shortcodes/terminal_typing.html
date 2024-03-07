@@ -1,0 +1,55 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function typeWriter(element, speed, callback) {
+            let text = element.innerHTML;
+            let i = 0;
+            element.innerHTML = "";
+            element.style.visibility = "visible"; // Make element visible when typing starts
+
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                } else if (callback) {
+                    callback(); // Call the callback function once typing is finished
+                }
+            }
+            typing();
+        }
+
+        // Function to apply typing effect to all commands in sequence
+        function typeAllCommands(commands, speed) {
+            if (commands.length === 0) return; // Stop if there are no commands
+
+            const next = commands.shift(); // Get the next command to type
+            typeWriter(next, speed, function () {
+                typeAllCommands(commands, speed); // Type the next command after the current is done
+            });
+        }
+
+        // Select all .terminal-command elements
+        let commands = Array.from(
+            document.querySelectorAll(".terminal-command"),
+        );
+        typeAllCommands(commands, 100); // Adjust 100 to change typing speed
+    });
+</script>
+
+<div class="terminal">
+    <div class="terminal-header">
+        <div class="terminal-buttons">
+            <div class="terminal-button terminal-button-red"></div>
+            <div class="terminal-button terminal-button-yellow"></div>
+            <div class="terminal-button terminal-button-green"></div>
+        </div>
+    </div>
+    <div class="terminal-body">
+        <div class="terminal-line">
+            <span class="terminal-prompt">$ whoami</span>
+            {% for line in lines %}
+            <div class="terminal-command">{{ line }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
