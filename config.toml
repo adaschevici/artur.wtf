@@ -18,17 +18,11 @@ highlight_code = true
 
 [languages.en]
 weight = 1
-title = "anemone"
+title = "unicow"
 languageName = "English"
 languageCode = "en"
 relativeURL = false
 
-[languages.fr]
-weight = 2
-title = "anemone"
-languageName = "Français"
-languageCode = "fr"
-relativeURL = false
 
 
 [extra]
@@ -38,8 +32,8 @@ list_pages = false
 
 
 header_nav = [
-  { url = "/", name_en = "/home/", name_fr = "/accueil/" },
-  { url = "/about", name_en = "/about/", name_fr = "/concernant/" },
-  { url = "/journal", name_en = "/journal/", name_fr = "/journal/" },
-  { url = "/blog", name_en = "/blog/", name_fr = "/blog/" }
+  { url = "/", name_en = "/home/" },
+  { url = "/about", name_en = "/about/" },
+  { url = "/til", name_en = "/til/" },
+  { url = "/blog", name_en = "/blog/" }
 ]
