@@ -1,7 +1,7 @@
 :root,
 :root.light {
   --bgColor: #EEEEEE;
-  --socBgColor: #222529;
+  --socFgColor: #D6D6D6;
   --fgColor: #41474E;
   --metaColor: #D26878;
   --headColor: #;
@@ -31,7 +31,7 @@
 
 :root.dark {
   --bgColor: #222529;
-  --socBgColor: #EEEEEE;
+  --socFgColor: #41474E;
   --fgColor: #D6D6D6;
   --metaColor: #78B6AD;
   --headColor: #;
@@ -136,6 +136,10 @@ body {
 .social-icon > a:hover {
   background-color: transparent;
   color: transparent;
+}
+
+.social-icon svg:hover {
+  fill: var(--socFgColor);
 }
 
 #linkedin {
