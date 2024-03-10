@@ -3,4 +3,26 @@
         {% set image = get_url(path="/assets/logo.jpg") %}
         <img src="{{ image }}" class="img-logo" alt="Logo">
     </div>
+    {% set github = load_data(path="themes/anemone/static/icons/github.svg") %}
+    {% set twitter = load_data(path="themes/anemone/static/icons/twitter.svg") %}
+    {% set linkedin = load_data(path="themes/anemone/static/icons/linkedin.svg") %}
+
+    <ul class="social-icons">
+        <li class="social-icon">
+            <a class="icon" href="https://github.com/adaschevici" title="Github" aria-label="Github">
+                {{ github | safe }}
+            </a>
+        </li>
+        <li class="social-icon">
+            <a class="icon" href="https://x.com/misfitiz3n" title="Twitter" aria-label="Twitter">
+                {{ twitter | safe }}
+            </a>
+        </li>
+        <li class="social-icon" id="linkedin">
+            <a href="https://www.linkedin.com/in/artur-daschevici-b5404815" title="LinkedIn"
+                aria-label="LinkedIn">
+                {{ linkedin | safe }}
+            </a>
+        </li>
+    </ul>
     <!-- Add other sidebar content here -->

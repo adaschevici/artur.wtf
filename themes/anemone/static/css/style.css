@@ -107,6 +107,29 @@ body {
   border-radius: 100px;
 }
 
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  justify-content: space-evenly;
+  margin: 1rem 0 1rem 0;
+  padding: 0 0 0 0;
+}
+
+.social-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  aspect-ratio: 1/1;
+  display: inline-block;
+  color: var(--fgColor);
+  fill: var(--fgColor);
+  background-color: transparent;
+}
+
+#linkedin {
+  margin-top: -2px;
+}
+
 h1 {
   font-size: 2.4rem;
   color: var(--bgColor);
