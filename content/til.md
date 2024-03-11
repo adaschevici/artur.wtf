@@ -3,6 +3,12 @@ title = "Today I Learned"
 date = 2024-03-05
 draft = false
 +++
+# TIL 😅 11th March 2024
+
+When you load svg icons from a svg sprite, you can use the `use` tag to reference the icon by its id.
+However if the url you use to access the page is not the one that is used internally, you will get a Cross-Origin error.
+Came across this with my zola blog, and it seemed to work intermittently, but I couldn't figure out why.
+
 
 # TIL 😅 10th March 2024
 
