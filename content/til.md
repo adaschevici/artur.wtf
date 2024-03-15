@@ -12,17 +12,16 @@ Came across this with my zola blog, and it seemed to work intermittently, but I 
 
 # TIL 😅 10th March 2024
 
-If you want to pass in a list to the [transformers](https://github.com/huggingface/transformers) library you are going to have a bad time.
-Try converting the list to a numpy array first. This is important because depending on how complex preprocessing is, the intermediate types need to be validated.
-
+Creating tensors is easy, just use numpy and `torch.tensor` to do it
 ```python
 import torch
 import numpy as np
 
 a = [1, 2, 3]
-try:
-    b = torch.tensor(a) # This will fail
-except ValueError as e:
-    c = torch.tensor(np.array(a)) # This will work
+c = torch.tensor(np.array(a)) #  c is a tensor
 ```
+
+# TIL 🤯 9th March 2024
+
+If you intend to create a vector based search engine, searching a database of assets will give you identical results if you are looking for similarity. If you want to have similarity search but at the same time look for diverse results you can use `max_marginal_relevance_search`, this is available in `langchain`, and it is bound to the vector store. 
 
