@@ -3,6 +3,12 @@ title = "Today I Learned"
 date = 2024-03-05
 draft = false
 +++
+
+# TIL 😅 25th May 2024
+
+_Anchor estimates_ are what you do when you try to shoehorn personal experience into estimating a future task.
+It is very error prone.
+
 # TIL 😅 11th March 2024
 
 When you load svg icons from a svg sprite, you can use the `use` tag to reference the icon by its id.
