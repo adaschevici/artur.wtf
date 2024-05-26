@@ -33,4 +33,4 @@ jobs:
       env:
         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       run: |
-        wrangler pages publish public --project-name=artur-wtf --branch=main
+        wrangler pages deploy public --project-name=artur-wtf --branch=main
