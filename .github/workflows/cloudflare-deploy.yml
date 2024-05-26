@@ -26,6 +26,9 @@ jobs:
     - name: Build the site
       run: zola build
 
+    - name: Install Wrangler CLI
+      run: npm install -g @cloudflare/wrangler
+
     # Optional: Deploy to GitHub Pages
     # - name: Deploy to GitHub Pages
     #   if: github.ref == 'refs/heads/main'
