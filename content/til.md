@@ -5,6 +5,10 @@ draft = false
 extra = { subheading = "A collection of things I learn every day" }
 +++
 
+# TIL 😅 27th May 2024
+
+The [`go-spew`](https://pkg.go.dev/github.com/davecgh/go-spew/spew) package has been deprecated a long time ago. You can use the [`litter`](https://pkg.go.dev/github.com/sanity-io/litter) package instead. But no point in using it, just use the `%+v` format specifier in `fmt.Printf` to print the struct with field names.
+
 # TIL 😅 25th May 2024
 
 _Anchor estimates_ are what you do when you try to shoehorn personal experience into estimating a future task.
