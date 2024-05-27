@@ -7,7 +7,12 @@ extra = { subheading = "A collection of things I learn every day" }
 
 # TIL 😅 27th May 2024
 
-The [`go-spew`](https://pkg.go.dev/github.com/davecgh/go-spew/spew) package has been deprecated a long time ago. You can use the [`litter`](https://pkg.go.dev/github.com/sanity-io/litter) package instead. But no point in using it, just use the `%+v` format specifier in `fmt.Printf` to print the struct with field names.
+The [`go-spew`](https://pkg.go.dev/github.com/davecgh/go-spew/spew) package has been deprecated a long time ago. You can use the [`litter`](https://pkg.go.dev/github.com/sanity-io/litter) package instead. But no point in using it, just use `json.MarshalIndent` to print the struct in a readable format.
+
+```go
+	jsonStr, _ := json.MarshalIndent(targets, "", "  ")
+	fmt.Println(string(jsonStr))
+```
 
 # TIL 😅 25th May 2024
 
