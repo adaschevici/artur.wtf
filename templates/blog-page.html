@@ -37,7 +37,7 @@
 
 <div class="content">
   {{ page.content | safe }}
-  {{ time_to_read }}
+  {{ time_to_read() }}
 </div>
 
 <p class="tagsData">
@@ -48,3 +48,4 @@
   {% endif %}
 </p>
 {% endblock content %}
+
