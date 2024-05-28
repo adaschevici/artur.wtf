@@ -31,6 +31,8 @@ We could make use of both _inside view_ and _outside view_:
 - _outside view_: see how long similar projects took(take the median) - I am referring to the reduced version where you cut out any product differentiators
 - _inside view_: see how long the differentiators will take (_this you can break down further as well into common tasks and unique tasks_)
 
+... do you see where I am going with this? It's all turtles all the way down :turtle:. Now you can already see how things can be broken down further into smaller pieces and how similarities can make estimating easier.
+
 ## Into the future with AI
 
 
