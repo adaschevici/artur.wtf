@@ -2,7 +2,8 @@
 title = "Today I Learned"
 date = 2024-03-05
 draft = false
-extra = { subheading = "A collection of things I learn every day" }
+[extra]
+    subheading = "A collection of things I learn every day"
 +++
 
 # TIL 😅 27th May 2024
