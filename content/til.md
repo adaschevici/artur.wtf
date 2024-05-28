@@ -6,6 +6,13 @@ draft = false
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL 😅 28th May 2024
+
+You can figure out number of commits today in git using a simple one liner
+```bash
+git log --since=midnight --oneline | wc -l
+```
+
 # TIL 😅 27th May 2024
 
 The [`go-spew`](https://pkg.go.dev/github.com/davecgh/go-spew/spew) package has been active last more than 7 years ago. You can use the [`litter`](https://pkg.go.dev/github.com/sanity-io/litter) package instead. But no point in using it, just use `json.MarshalIndent` to print the struct in a readable format, or alternatively use `fmt.Printf("%#v", struct)` to print the struct in a readable format.
