@@ -1,7 +1,7 @@
 +++
-paginate_by = 2
+paginate_by = 10
 path = "blog"
-title = "All blog posts"
+title = "All my musings, in long form"
 sort_by = "date"
 page_template = "blog-page.html"
 +++
