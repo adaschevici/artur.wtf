@@ -35,11 +35,11 @@ We could make use of both _inside view_ and _outside view_:
 
 ## Into the future with AI
 
-Last couple of years I have been working in the field of AI and I have been an avid reader of various papers and consumed a decent amount of tutorials and courses. Deep learning is an amazingly powerful tool that is able to draw conclusions based on the importance of a particular feature of the project and clasify it.
+Last couple of years I have been working in the field of AI and I have been an avid reader of various papers and consumed a decent amount of tutorials and courses. Deep learning is an amazingly powerful tool that is able to draw conclusions based on the importance of a particular feature of the project and classify it.
 
 If we had the data about projects we could train a multi-class classifier to predict the time it would take to complete a project(S/M/L/XL). This could be a great Trello plugin for example.
 
-Linear regression can be another simpler approach to do a numeric estimate of the project timeline. Now, this feels like we are taking all the joy out of the agile SDLC, but remember this is only supposed to be used as a data focused approach, from the _outside view_ i.e. looking objectively at the data, so no hard feelings to be had:wink:.
+Linear regression can be another simpler approach to do a numeric estimate of the project timeline. Now, this feels like we are taking all the joy out of the agile SDLC, but remember this is only supposed to be used as a data focused approach, from the _outside view_ i.e. looking objectively at the data, so no hard feelings to be had :wink:.
 
 Thinking a bit further we could have an LLM + RAG system that looks at the database of projects we have broken down, does a similarity search and gives us some kind of standard estimates.
 
