@@ -6,6 +6,14 @@ draft = false
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL :sweat_smile: 29th May 2024
+
+In order to use shortcodes in Zola templates you need to import them using `include` directive in the template file.
+
+```html
+{% include "shortcodes/shortcode.html" %}
+``` 
+
 # TIL 😅 28th May 2024
 
 You can figure out number of commits today in git using a simple one liner
