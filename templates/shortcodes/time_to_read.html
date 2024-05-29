@@ -1,1 +1,41 @@
-<div>Time to read: <span>WIP: coming soon</span> minutes</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function estimateReadingTime(text) {
+      const wordsPerMinute = 200; // Average reading speed
+      const words = text.trim().split(/\s+/).length; // Count words in the text
+      const minutes = words / wordsPerMinute;
+      const seconds = Math.round((minutes - Math.floor(minutes)) * 60);
+      return {
+	minutes: Math.ceil(minutes),
+      };
+    }
+  
+    function getTextContent() {
+      const bodyText = document.body.innerText;
+      return bodyText;
+    }
+  
+    function calculateReadingTime() {
+      const textContent = getTextContent();
+      const readingTime = estimateReadingTime(textContent);
+  
+      const readingTimeContainer = document.createElement('div');
+      readingTimeContainer.style.position = 'fixed';
+      readingTimeContainer.style.bottom = '10px';
+      readingTimeContainer.style.right = '10px';
+      readingTimeContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      readingTimeContainer.style.color = '#fff';
+      readingTimeContainer.style.padding = '10px';
+      readingTimeContainer.style.borderRadius = '5px';
+      readingTimeContainer.style.zIndex = '1000';
+  
+      readingTimeContainer.innerText = `Estimated Reading Time: ${readingTime.minutes} min`;
+  
+      document.body.appendChild(readingTimeContainer);
+    }
+    calculateReadingTime();
+  });
+</script>
+<div>
+  <!-- Time to read: <span class="time-to-read-calculated">WIP: coming soon</span> minutes -->
+</div>
