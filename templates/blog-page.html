@@ -35,9 +35,11 @@
 </ul>
 {% endif %}
 
-<div class="content">
-  {{ page.content | safe }}
-  {{ time_to_read() }}
+<div class="blogpage-content">
+  <div class="main-content">
+    {{ page.content | safe }}
+  </div>
+  {% include "shortcodes/time_to_read.html" %}
 </div>
 
 <p class="tagsData">
