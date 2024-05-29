@@ -6,12 +6,13 @@
       const minutes = words / wordsPerMinute;
       const seconds = Math.round((minutes - Math.floor(minutes)) * 60);
       return {
-	minutes: Math.ceil(minutes),
+	minutes: Math.floor(minutes),
       };
     }
   
     function getTextContent() {
-      const bodyText = document.body.innerText;
+      const bodyText = document.querySelector('.readable-content').innerText;
+      console.log(bodyText);
       return bodyText;
     }
   

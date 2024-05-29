@@ -48,7 +48,7 @@ Linear regression can be another simpler approach to do a numeric estimate of th
 
 Thinking a bit further we could have an LLM + RAG system that looks at the database of projects we have broken down, does a similarity search and gives us some kind of standard estimates.
 
-The data would be probabily a huge challenge for this one. You would have to get data from various sources and have it clean, usable and can be used to train the models.
+The data would probably be a huge challenge for this one. You would have to get data from various sources and have it clean, usable and can be used to train the models.
 
 
 ## Conclusion
