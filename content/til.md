@@ -9,6 +9,14 @@ paginate_by = 3
 
 # TIL :sweat_smile: 29th May 2024
 
+Rust zola static site builder contains in the page object a reading time field that can be used to display the reading time of the page. You can use it in the template like this
+
+```html
+{{ page.reading_time }}
+```
+
+# TIL :sweat_smile: 29th May 2024
+
 In order to use shortcodes in Zola templates you need to import them using `include` directive in the template file.
 
 ```html
