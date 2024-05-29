@@ -1,6 +1,7 @@
 +++
 title = "Keep your estimates boring"
 date = 2024-05-28
+time_to_read = 5
 [taxonomies]
   tags = ["estimating software projects"]
 +++
@@ -10,7 +11,7 @@ Most everyone I know has got shiny object syndrome. We all want to work on the l
 
 {{ img(id="js-fw-meme.png", alt="Zero days without new framework") }}
 
-In the first article in the series we talked about getting _anchors_ right and trying to stay away from the personal bias when choosing a good anchor. In _How Big Things Get Done_ the authors also bring in a concept that was new to me: **the reference class**.
+In the first article in the series we talked about getting _anchors_ right and trying to stay away from the uniqueness bias when choosing a good anchor. In _How Big Things Get Done_ the authors also bring in a concept that was new to me: **the reference class**.
 The phrase was originally coined in the 1970s by the psychologist [Daniel Kahneman and his colleague Amos Tversky](https://www.newyorker.com/books/page-turner/the-two-friends-who-changed-how-we-think-about-how-we-think) and is regulary used in the context of _reference class forecasting_.
 Daniel and Amos refer to two types of views when estimating a project:
 - _inside view_ which is the view while working on the project with your personal biases
@@ -33,6 +34,10 @@ We could make use of both _inside view_ and _outside view_:
 
 ... do you see where I am going with this? It's all turtles all the way down :turtle:. Now you can already see how things can be broken down further into smaller pieces and how similarities can make estimating easier.
 
+The numbers show a 30% increase in accuracy when using _reference class forecasting_, that is the _outside view_, with 50% not being uncommon.
+
+The aspect that is different from plain anchor-based estimates is that you choose an anchor that is based on the _reference class_ which makes it closer to the objective reality.
+
 ## Into the future with AI
 
 Last couple of years I have been working in the field of AI and I have been an avid reader of various papers and consumed a decent amount of tutorials and courses. Deep learning is an amazingly powerful tool that is able to draw conclusions based on the importance of a particular feature of the project and classify it.
@@ -51,3 +56,4 @@ The data would be probabily a huge challenge for this one. You would have to get
 - **Use the reference class**: look at similar projects and see how long they took
 - **Use both views**: _inside view_ and _outside view_ to get a better estimate
 - **Use data**: if you have it, use it to your advantage
+- **Ask for help**: if you are not sure, ask someone who has done it before, outside perspective can add a layer of objectivity
