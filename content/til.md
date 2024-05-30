@@ -7,6 +7,18 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL :mind_blown: 30th March 2024
+
+You can run `chromedriver` from the command line for trying to access it via cdp protocol programatically.
+```
+# on OSX by default this does not work, developer not verified
+chromedriver --port=9222
+
+# OSX prior to running that
+cd /path/to/chromedriver
+xattr -d com.apple.quarantine chromedriver
+```
+
 # TIL :sweat_smile: 29th May 2024
 
 Rust zola static site builder contains in the page object a reading time field that can be used to display the reading time of the page. You can use it in the template like this
