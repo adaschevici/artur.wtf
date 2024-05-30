@@ -10,7 +10,7 @@ paginate_by = 3
 # TIL :mind_blown: 30th March 2024
 
 You can run `chromedriver` from the command line for trying to access it via cdp protocol programatically.
-```
+```sh
 # on OSX by default this does not work, developer not verified
 chromedriver --port=9222
 
@@ -23,7 +23,7 @@ xattr -d com.apple.quarantine chromedriver
 
 Rust zola static site builder contains in the page object a reading time field that can be used to display the reading time of the page. You can use it in the template like this
 
-```html
+```jinja
 {{ page.reading_time }}
 ```
 
@@ -31,7 +31,7 @@ Rust zola static site builder contains in the page object a reading time field t
 
 In order to use shortcodes in Zola templates you need to import them using `include` directive in the template file.
 
-```html
+```jinja
 {% include "shortcodes/shortcode.html" %}
 ``` 
 
