@@ -7,6 +7,10 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL: 1st June 2024
+
+There is a submodule in the `go` standard library that allows you to do logging so it is not necessary to use `logrus` for logging.
+
 # TIL :mind_blown: 30th March 2024
 
 You can run `chromedriver` from the command line for trying to access it via cdp protocol programatically.
