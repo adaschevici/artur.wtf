@@ -7,6 +7,10 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL: :thinking: 2nd June 2024
+
+There is a new OSS library called `ScrapeGraphAI` that aims to combine scraping with graph logic to transform natural language into scrapers, wodnering how this will work out in the long run.
+
 # TIL: 1st June 2024
 
 There is a submodule in the `go` standard library that allows you to do logging so it is not necessary to use `logrus` for logging.
