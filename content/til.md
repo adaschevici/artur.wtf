@@ -7,6 +7,19 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL: :sweat_smile: 3rd June 2024
+
+You can create arbitrarily sized files from the cli using one of the following commands
+```sh
+# create a 1GB file
+dd if=/dev/zero of=1GBfile bs=1M count=1024
+
+# create a 1GB file
+head -c 1G /dev/urandom > 1GBfile.txt
+
+# create a 1GB file
+truncate -s 1G 1GBfile
+```
 # TIL: :thinking: 2nd June 2024
 
 There is a new OSS library called `ScrapeGraphAI` that aims to combine scraping with graph logic to transform natural language into scrapers, wodnering how this will work out in the long run.
