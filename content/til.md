@@ -7,6 +7,10 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL: :sweat_smile: 5th June 2024
+
+I have been somewhat misusing :thinking: _"It's turtles all the way down"_ probably. The new context I have learned about is that of a nonsensical circular logic argument that does not rely on a root supporting objectively accepted fact. 
+
 # TIL: :sweat_smile: 3rd June 2024
 
 You can create arbitrarily sized files from the cli using one of the following commands
