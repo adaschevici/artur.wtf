@@ -15,9 +15,11 @@ Nowadays due to `RAG` systems, gathering data automatically, breaking it down an
 - single page apps have gained huge traction, most everyone turning to building their content in a `JS` bundle, loading everything on the fly as the page loads
 - websites have become fussy about having their data used by unknown parties, so they have been closing down access and have become very litigious(#TODO: maybe add some cases of court cases Linkedin vs those guys, Financial Times vs OpenAI)
 - bot detection and prevention - this one is funny since it is like a flywheel, it built 2 lucrative markets overnight - bot services and anti bot protection
-- TBH, not quite sure where this is heading, it kind of feels like people have been aiming to move all their datas into data centers but since data is becoming so guarded...will they move back to paper?
+- TBH, it's difficult to predict where this might be heading, it kind of feels like people have been aiming to move all their datas into data centers but since data is becoming so guarded...will they move back to paper?
 
 (#TODO: Add a fun meme like all your data are belong to us)
+
+Because of `SPAs` and the wide adoption of `JS` in websites it is much more convenient to use some sort of browser automation to crawl pages and extract the information. This makes it less prone to badgering the servers, and having to reverse engineer the page content loading, so you will probably want to use either a `chromedp` or `webdriver` flavored communications protocol with the browser. Back in the day IIRC I have also used the `PyQt` bindings for acessing the `Qt` browser component.
 
 # How?
 There are many alternatives to `puppeteer`, the way they work is by using the `cdp` protocol
