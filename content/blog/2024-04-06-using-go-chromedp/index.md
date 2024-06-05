@@ -13,6 +13,12 @@ The amount of data on the web is pretty crazy, you have various sources and mult
 
 Nowadays due to `RAG` systems, gathering data automatically, breaking it down and feeding it into embedding models and storing it in vector databases for `LLM` information enhancement has come back into the spotlight. In between then and now there have been a few changes in the way data is served up for consumption. Off the top of my head:
 - single page apps have gained huge traction, most everyone turning to building their content in a `JS` bundle, loading everything on the fly as the page loads
+- websites have become fussy about having their data used by unknown parties, so they have been closing down access and have become very litigious(#TODO: maybe add some cases of court cases Linkedin vs those guys, Financial Times vs OpenAI)
+- bot detection and prevention - this one is funny since it is like a flywheel, it built 2 lucrative markets overnight - bot services and anti bot protection
+- TBH, not quite sure where this is heading, it kind of feels like people have been aiming to move all their datas into data centers but since data is becoming so guarded...will they move back to paper?
+
+(#TODO: Add a fun meme like all your data are belong to us)
+
 # How?
 There are many alternatives to `puppeteer`, the way they work is by using the `cdp` protocol
 
