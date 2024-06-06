@@ -1,6 +1,6 @@
 +++
 title = "Experimenting with a puppeteer alternative in Go"
-date = 2024-04-06
+date = 2024-06-06
 draft = false
 +++
 
