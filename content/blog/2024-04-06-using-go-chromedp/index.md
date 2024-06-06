@@ -17,13 +17,20 @@ Nowadays due to `RAG` systems, gathering data automatically, breaking it down an
 - bot detection and prevention - this one is funny since it is like a flywheel, it built 2 lucrative markets overnight - bot services and anti bot protection
 - TBH, it's difficult to predict where this might be heading, it kind of feels like people have been aiming to move all their datas into data centers but since data is becoming so guarded...will they move back to paper?
 
-(#TODO: Add a fun meme like all your data are belong to us)
+{{ img(id="all-your-data-are-belong-to-us.png", alt="All your data are belong to us") }}
 
-Because of `SPAs` and the wide adoption of `JS` in websites it is much more convenient to use some sort of browser automation to crawl pages and extract the information. This makes it less prone to badgering the servers, and having to reverse engineer the page content loading, so you will probably want to use either a `chromedp` or `webdriver` flavored communications protocol with the browser. Back in the day IIRC I have also used the `PyQt` bindings for acessing the `Qt` browser component.
+Because of `SPAs` and the wide adoption of `JS` in websites it is much more convenient to use some sort of browser automation to crawl pages and extract the information. This makes it less prone to badgering the servers, and having to reverse engineer the page content loading, so you will probably want to use either a [`chrome developer tools protocol`](https://chromedevtools.github.io/devtools-protocol/) or [`webdriver`](https://www.w3.org/TR/webdriver/) flavored communications protocol with the browser. Back in the day IIRC I have also used the [`PyQt`](https://www.riverbankcomputing.com/software/pyqt/intro) bindings for acessing the `Qt` browser component but nowadays its mostly straight-up browsers.
+
+These days my goto is `puppeteer`. It's a weird tool that can be easily be used to scrape data from pages. The reason I say it is weird is mainly due to the deceiving nature of the internals, essentially using two `JS` engines that communicate via the `cdp` protocol that is a a very dense beast and does not play nice with complex objects.
+
+Recently it has become more appealing to me to use strongly typed languages. This is probably because I have started to narrow down my experiments to very small code samples that illustrate one thing at time. I would go as far as to call it experiment driven development. Duck typing is fun as you can print pretty much anything you want. I was thinking to use `rust` but it has a very tough learning curve. Node is pretty nice with `mjs` but it's confusing sometimes when it crosses over between the two event loops, also while it is good for communicating on `cdp` it is not really designed for sync code and `python` is a bit boring for me so I decided to look at `go`. Since it is a google language I expected it to have decent support for cdp, and the learning curve is slightly gentler than `rust`.
 
 # How?
-There are many alternatives to `puppeteer`, the way they work is by using the `cdp` protocol
+Looking at the alternatives there are two that stand out [`chromedp`](https://github.com/chromedp/chromedp) and [rod](https://go-rod.github.io/#/). Rod looks like it is the prodigal son of [`behave`](https://behave.readthedocs.io/en/latest/) and [`cucumber`](https://cucumber.io/) some well established BDD frameworks. Personally I am not finding the `MustYaddaYadda...` very readable and combining it with other custom APIs would probably make it become inconsistent. It has a few nice things in the way it abstracts `iframes` but I am just unable to go past the higher level API.
 
+In the end I wound up choosing `chromedp`. It works pretty well for most use cases, there are some places where it doesn't quite cut it and I wish it did, but by now I have come to terms there is no one technology to rule them all, wouldn't it be nice if that existed?
+
+`chromedp` automates chrome or any binary that you are able to communicate with via [`cdp`](https://github.com/chromedp/chromedp/blob/ebf842c7bc28db77d0bf4d757f5948d769d0866f/allocate.go#L349). The API is somewhat intuitive, haven't found myself diving into the guts of it very often to figure out how stuff works. The fun part 
 # The pleasant surprises
 Well, calling them surprises is a bit of a stretch, I have been `golang` over the years and I have to admit it is a pretty nice ecosystem and language. 
 
