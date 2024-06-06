@@ -111,9 +111,14 @@ An example of how you might extract data from an `iframe` might look something l
 
 But in order to trigger events on elements inside the iframe you can't just use the `chromedp` API, and since `chromedp.Evaluate` does not take a `Node` as context you will need to perform all the actions in `javascript` and that will make the resulting code a bit of a mishmash of `go` and `js`.
 
+`puppeteer` also has some extra packages that can be used like `puppeteer-stealth` but `chromedp` does not seem to have an equivalent for that at this time. The `rod` package has [`rod stealth`](https://github.com/go-rod/stealth) but I haven't tried it since the API is not to my liking.
+
+The other slightly dissappointing missing feature is that when running in headless mode all the GPU features are disabled because it is running in a [`headless-chrome`](https://github.com/chromedp/docker-headless-shell) container which does not have a display server. Puppeteer is able to run with GPU features enabled allowing it to pass the [`webgl fingerprinting`](http://bot.sannysoft.com/) tests.
+
 # Conclusion
 - in some ways puppeteer is still better than `chromedp`, working with `iframes` falls short
 - `rod` is a nice alternative but its API looks like it was designed for testing, reminds me of `cucumber`
-- 
+- `chromedp` is a nice alternative to `puppeteer` if you are looking to build a binary that can be distributed easily 
+- it is a bit more performant than `puppeteer` due to the concurrency model in `go`
 
 
