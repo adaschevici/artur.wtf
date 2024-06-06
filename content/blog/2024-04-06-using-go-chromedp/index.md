@@ -30,6 +30,9 @@ Looking at the alternatives there are two that stand out [`chromedp`](https://gi
 
 In the end I wound up choosing `chromedp`. It works pretty well for most use cases, there are some places where it doesn't quite cut it and I wish it did, but by now I have come to terms there is no one technology to rule them all, wouldn't it be nice if that existed?
 
+
+# The pleasant surprises
+Well, calling them surprises is a bit of a stretch, I have been `golang` over the years and I have to admit it is a pretty nice ecosystem and language. 
 `chromedp` automates chrome or any binary that you are able to communicate with via [`cdp`](https://github.com/chromedp/chromedp/blob/ebf842c7bc28db77d0bf4d757f5948d769d0866f/allocate.go#L349). The API is somewhat intuitive, haven't found myself diving into the guts of it very often to figure out how stuff works. The good part is that once you extract the data from the nodes you are interested in you can map it to go structs and make use of the go typing system. 
 
 For example you can grab a list of elements via selector:
@@ -60,9 +63,6 @@ then map each element to a struct
 ```
 
 Another nice perk is that go is built with concurrency in mind
-# The pleasant surprises
-Well, calling them surprises is a bit of a stretch, I have been `golang` over the years and I have to admit it is a pretty nice ecosystem and language. 
-
 # The ugly parts
 The way to communicate with the browser is still through the `cdp` protocol and sometimes you need to pass objects only objects that can be serialized.
 
