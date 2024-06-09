@@ -7,6 +7,10 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+# TIL: :sweat_smile: 9th June 2024
+
+You can  run a `git add -N example.txt` to allow you to perform stage hunks in the file even if it is a new file in the repo, ie via `git add -p example.txt`. 
+
 # TIL: :sweat_smile: 5th June 2024
 
 I have been somewhat misusing :thinking: _"It's turtles all the way down"_ probably. The new context I have learned about is that of a nonsensical circular logic argument that does not rely on a root supporting objectively accepted fact. 
