@@ -41,6 +41,19 @@ Another neat thing is that when you have decent chunks of code that can be share
 
 ## Cherry pick of features
 
+There are a few notable features that I would kick myself if I didn't mention:
+- you can define choices for your options by using the `choices` key in your `copier.yml` file:
+    ```yaml
+    project_type:
+    type: str
+    help: What type of project are you creating?
+    default: neovim-plugin
+    choices:
+        - neovim-plugin
+        - golang-cli
+        - python-cli
+    ```
+
 
 ## Cool use-cases
 - you can define a folder/file be created conditionally depending on an option selection eg:
