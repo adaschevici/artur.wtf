@@ -25,6 +25,8 @@ scratcher.nvim/
 ```
 The standard way of naming things seems to be gravitating towards having some conventions as you can see so setting up a new plugin would be pretty much repetitive and automatable. And it will probably save you some time and willpower in the long run, provided you have some sense of what your final architecture needs to look like.
 
+{{ img(id="copier.png", alt="Copier clones") }}
+
 ## How?
 
 If you are coming from `python` like I am then you may already  be familiar with [`cookie-cutter`](https://github.com/cookiecutter/cookiecutter). I have been in the situation a few times where it might have made sense to use it, but every time it was a matter of balancing out the timeline and trying to stay away from over engineering.
