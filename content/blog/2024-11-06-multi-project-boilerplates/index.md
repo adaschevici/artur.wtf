@@ -29,11 +29,11 @@ The standard way of naming things seems to be gravitating towards having some co
 
 ## How?
 
-If you are coming from `python` like I am then you may already  be familiar with [`cookie-cutter`](https://github.com/cookiecutter/cookiecutter). I have been in the situation a few times where it might have made sense to use it, but every time it was a matter of balancing out the timeline and trying to stay away from over engineering.
+If you are coming from `python` like I am then you may already  be familiar with [`cookiecutter`](https://github.com/cookiecutter/cookiecutter). I have been in the situation a few times where it might have made sense to use it, but every time it was a matter of balancing out the timeline and trying to stay away from over engineering.
 
 Lately though the stuff I have been dealing with has been slightly on the more experimental side so churning out something new is something that happens quite often, so it makes more sense to have a prebaked architecture for specific project styles.
 
-From the project templating libraries I was aware of [`cookie-cutter`](https://github.com/cookiecutter/cookiecutter) and [`copier`](https://copier.readthedocs.io/en/stable/). `cookie-cutter` uses `json` for driving the generation while `copier` uses `yaml`.
+From the project templating libraries I was aware of [`cookiecutter`](https://github.com/cookiecutter/cookiecutter) and [`copier`](https://copier.readthedocs.io/en/stable/). `cookiecutter` uses `json` for driving the generation while `copier` uses `yaml`.
 
 In the end I used copier as I tend to favor `yaml` because it allows for comments in the config. It makes it easy to plop random pieces of info or even docs in there. Since the config files driving the wizard it can become quite convoluted and also difficult to read as you would normal code so having the ability to document different options is probably a plus I would think.
 
