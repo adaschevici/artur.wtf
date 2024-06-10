@@ -53,6 +53,10 @@ There are a few notable features that I would kick myself if I didn't mention:
         - golang-cli
         - python-cli
     ```
+- you can include different files in the root level `copier.yml` thus breaking down the wizard in composable parts, for example the CI/CD parts can be shared across projects
+    ```yaml
+    !include shared-conf/common.*.yml
+    ```
 
 
 ## Cool use-cases
