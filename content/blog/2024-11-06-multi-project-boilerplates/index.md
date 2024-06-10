@@ -1,7 +1,7 @@
 +++
 title = "Using copier to aggregate multiple project boilerplates"
 date = 2024-11-06
-draft = true
+draft = false
 +++
 
 ## Why?
