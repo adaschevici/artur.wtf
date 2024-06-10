@@ -8,7 +8,7 @@ draft = true
 
 Technically when you start a new project the best way to approach it is by using the `CLI` tool of the realm, such as `svelte-kit`, `astro`, `django-cli` etc..., you get the idea. The huge bonus to doing this is that you get the best practices baked in and as new standards are created the `CLI` gets updated.
 
-So far the frontend has been a lot luckier with the tools as far as project generation goes, every major framework having come out with their own project generation tool, some having more than one possibly due to (multiple thought camps: TODO: better way to phrase this) multiple thought camps.
+So far the frontend has been a lot luckier with the tools as far as project generation goes, every major framework having come out with their own project generation tool, some having more than one possibly due to multiple schools of thought.
 
 There are some backend frameworks that have project generation tools too but so far it seems to be difficult to agree on the structure. The best you can do is find a way to structure it that looks like the majority and makes sense for you. I have been building spiders and crawlers for data ingestion pipelines using `python` at first and then `node` and `go`. Even more recently I have been looking at hacking out some tweaks in some of my `neovim` plugins(that is lua).
 
@@ -27,11 +27,20 @@ The standard way of naming things seems to be gravitating towards having some co
 
 ## How?
 
-If you are coming from `python` like I am then you may already  be familiar with [`cookie-cutter`](TODO: add link). I have looked at what it does and how it might benefit me in a few cases but every time it was a matter of balancing out the timeline and trying to stay away from over engineering. Lately though the stuff I have been dealing with has been slightly on the more experimental side so churning out something new is something that happens quite often, so it makes more sense to have a prebaked architecture for specific projects.
+If you are coming from `python` like I am then you may already  be familiar with [`cookie-cutter`](https://github.com/cookiecutter/cookiecutter). I have been in the situation a few times where it might have made sense to use it, but every time it was a matter of balancing out the timeline and trying to stay away from over engineering.
 
-From the project templating libraries I was aware of `cookie-cutter` and `copier`. `cookie-cutter` uses `json` for driving the generation while `copier` uses `yaml`. I tend to favor yaml because it allows for comments in the config. It makes it easy to plop random pieces of info or even docs in there. Since the config files driving the wizard it can become quite convoluted and also difficult to read as you would normal code so having the ability to document different options is probably a plus I would think.
+Lately though the stuff I have been dealing with has been slightly on the more experimental side so churning out something new is something that happens quite often, so it makes more sense to have a prebaked architecture for specific project styles.
+
+From the project templating libraries I was aware of [`cookie-cutter`](https://github.com/cookiecutter/cookiecutter) and [`copier`](https://copier.readthedocs.io/en/stable/). `cookie-cutter` uses `json` for driving the generation while `copier` uses `yaml`.
+
+In the end I used copier as I tend to favor `yaml` because it allows for comments in the config. It makes it easy to plop random pieces of info or even docs in there. Since the config files driving the wizard it can become quite convoluted and also difficult to read as you would normal code so having the ability to document different options is probably a plus I would think.
+
+The library allows you to build a sort of setup wizard where you can set up your desired flow of questions, and you can use the choices supplied to drive what folders will be used in the final project boilerplate. This is pretty nifty as it gives you the ability to customize stuff all the way down to the build process.
+
+Another neat thing is that when you have decent chunks of code that can be shared, so you can just put that in your boilerplate, so it will essentially give you things just the way you like them.
 
 ## Cherry pick of features
+
 
 ## Cool use-cases
 - you can define a folder/file be created conditionally depending on an option selection eg:
