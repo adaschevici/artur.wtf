@@ -7,6 +7,16 @@ paginate_by = 3
     subheading = "A collection of things I learn every day"
 +++
 
+
+# TIL: :mind_blown: 11th June 2024
+In order to send keys from lua to nvim you need to use the following nested syntax, and if you want to separate it into a function:
+```lua
+_G.send_keys = function(keys)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, true, true), 'n', true)
+end
+```
+
+
 # TIL: :sweat_smile: 9th June 2024
 
 You can  run a `git add -N example.txt` to allow you to perform stage hunks in the file even if it is a new file in the repo, ie via `git add -p example.txt`. 
