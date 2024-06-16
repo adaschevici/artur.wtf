@@ -8,6 +8,23 @@ paginate_by = 3
 +++
 
 
+# TIL: :sweat_smile: 16th June 2024
+Converting build from `webpack` to `vite` is tricky because some loaders are not supported, and the structure is not one to one translatable. Tried it with `wasm` from [here](https://rustwasm.github.io/wasm-bindgen/examples/hello-world.html) and the build config for `vite` is as follows:
+```js
+import { defineConfig } from "vite";
+import wasm from "vite-plugin-wasm";
+
+export default defineConfig({
+    plugins: [
+        wasm(),
+    ],
+    root: "<root-of-js-loader>",
+    build: {
+        target: "esnext"
+    }
+});
+```
+
 # TIL: :mind_blown: 11th June 2024
 In order to send keys from lua to nvim you need to use the following nested syntax, and if you want to separate it into a function:
 ```lua
