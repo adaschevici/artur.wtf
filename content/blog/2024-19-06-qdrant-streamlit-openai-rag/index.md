@@ -1,6 +1,6 @@
 +++
 title = "Building my own chatgpt agent replica on OpenAI's GPT-4"
-date = 2024-19-06
+date = 2024-06-19
 draft = true
 +++
 
