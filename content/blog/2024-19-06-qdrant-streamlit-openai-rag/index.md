@@ -18,22 +18,70 @@ Most big AI contenders on the market provide you with a toolbox of high level ab
 
 I wanted to get a project for running my own pipeline with somewhat interchangeable parts. Models can be swapped around so that you can make the most of the latest models either available on [`Hugginface`](https://huggingface.co/), [`OpenAI`](https://openai.com/) or wherever.
 
-Because things are moving so fast in model research the top contenders are surpassing each other every day pretty much. A custom pipeline  would allow us to quickly iterate and test out new models as they come out.
+Because things are moving so fast in model research the top contenders are surpassing each other every day pretty much. A custom pipeline  would allow us to quickly iterate and test out new models as they evolve. This allows you to try out new models and just as easily rollback your experiment.
 
 What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses [`qdrant`](https://qdrant.com/) to index and search data extracted from a collection of `pdf` document. The app is a simple chat interface where you can ask questions about the data and get responses from a mixture of `GPT-4` and the indexed data.
 
 ## How?
 
-1. Setting up the environment
+#### 1. Setting up the environment
    - use `pyenv` to manage python versions
-     ```bash
-     # update versions
-     pyenv update
-     # install any python version
-     pyenv install 3.12.3 # as of writing this
-     ```
-Talk about tech used: Streamlit, qdrant, GPT-4o, etc.
+   ```bash
+   # update versions
+   pyenv update
+   # install any python version
+   pyenv install 3.12.3 # as of writing this
+   # create a virtualenv
+   ~/.pyenv/versions/3.12.3/bin/python -m venv .venv
+   # and then activate it
+   source .venv/bin/activate
+   ```
+#### 2. Install the dependencies
+   ```bash
+   # install poetry
+   pip install poetry
+   # install the dependencies
+   poetry install
+   ```
+   the dependencies section of the `pyproject.toml` file should look like this:
+   ```toml
+   ...
+   [tool.poetry.dependencies]
+    python = "^3.12"
+    streamlit = "^1.32.1"
+    langchain = "^0.1.12"
+    python-dotenv = "^1.0.1"
+    qdrant-client = "^1.8.0"
+    openai = "^1.13.3"
+    huggingface-hub = "^0.21.4"
+    pydantic-settings = "^2.2.1"
+    pydantic = "^2.6.4"
+    pypdf2 = "^3.0.1"
+    langchain-community = "^0.0.28"
+    langchain-core = "^0.1.31"
+    langchain-openai = "^0.0.8"
+    instructorembedding = "^1.0.1"
+    sentence-transformers = "2.2.2"
+   ...
+    ```
+#### 3. Set up the loading of the variables from a config file
+
+#### 4. Set up the UI elements
+
+#### 5. pdf data extraction
+
+#### 6. Setting up the `qdrant` server via `docker`
+
+#### 7. Indexing the data
+
+#### 8. sending the query 
 
 ## Conclusions
-how it went, what I learned, etc.
+- you can build your own agent and have it respond to queries about your data quite easily
+- `streamlit` is great for prototyping and building out simple interfaces
+- `qdrant` is good for performing similarity search on your data
+- when building `RAG` systems you need to make use of embedding models to encode your data
+- embedding models are the most taxing parts of the pipeline
+- if you have pluggable parts in your pipeline you can swap them out easily to save costs
+- 
 
