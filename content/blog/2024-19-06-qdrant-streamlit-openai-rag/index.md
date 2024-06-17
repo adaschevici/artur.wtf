@@ -67,6 +67,18 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
 
 #### 3. Set up the loading of the variables from a config file
    - a nice way to manage settings is to use `pydantic` and `pydantic-settings`
+   ```python
+   from pydantic import Field, SecretStr
+   from pydantic_settings import BaseSettings, SettingsConfigDict
+
+   class Settings(BaseSettings):
+       model_config = SettingsConfigDict(env_file="config.env", env_file_encoding="utf-8")
+       hf_access_token: SecretStr = Field(alias="HUGGINGFACEHUB_API_TOKEN")
+       openai_api_key: SecretStr = Field(alias="OPENAI_API_KEY")
+
+   ```
+   this way you can load the settings from `config.env` but variables in the environment override the ones in the file.
+
 
 #### 4. Set up the UI elements
    - Streamlit makes it extremely simple to create a layout for your app. You have a single script that can run via the streamlit binary:
