@@ -79,6 +79,8 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
    ```
    this way you can load the settings from `config.env` but variables in the environment override the ones in the file.
 
+   - a nice extra is that you also get type checking and validation from `pydantic` including `SecretStr` types for sensitive data.
+
 
 #### 4. Set up the UI elements
    - Streamlit makes it extremely simple to create a layout for your app. You have a single script that can run via the streamlit binary:
