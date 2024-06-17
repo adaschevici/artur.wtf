@@ -63,10 +63,16 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
     instructorembedding = "^1.0.1"
     sentence-transformers = "2.2.2"
    ...
-    ```
+   ```
+
 #### 3. Set up the loading of the variables from a config file
+   - a nice way to manage settings is to use `pydantic` and `pydantic-settings`
 
 #### 4. Set up the UI elements
+   - Streamlit makes it extremely simple to create a layout for your app. You have a single script that can run via the streamlit binary:
+   ```bash
+   streamlit run app.py
+   ```
 
 #### 5. pdf data extraction
 
