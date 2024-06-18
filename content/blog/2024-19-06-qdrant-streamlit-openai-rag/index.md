@@ -87,6 +87,8 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
    ```bash
    streamlit run app.py
    ```
+   [The gallery](https://streamlit.io/components?category=all) has many examples of various integrations and components that you can use to build your app. You have smaller components like inputs and buttons but also more complex UI tables, charts, you even have a [`ChatGPT`](https://streamlit.io/components?category=llms) style templates.
+   
 
 #### 5. pdf data extraction
 
