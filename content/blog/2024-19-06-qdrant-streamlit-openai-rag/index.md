@@ -160,27 +160,30 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
 #### 6. Setting up the `qdrant` server via `docker`
 
 #### 7. Indexing the data
-   - The `qdrant` client can be used to index the embeddings and perform similarity search on the data.
+   - The `qdrant` client can be used to index the embeddings and perform similarity search on the data. You can pick and choose the best model for embeddings for your data and swap them out if you find [a better one](https://huggingface.co/spaces/mteb/leaderboard).
    ```python
-   from qdrant_client import QdrantClient
-
-   def index_data(vector_store):
-       client = QdrantClient()
-       client.create_collection("pdf_data")
-       for i, vector in enumerate(vector_store):
-           client.insert_vector("pdf_data", i, vector)
-       client.flush("pdf_data")
-   ```
-
-   - The `qdrant` client can be used to perform similarity search on the indexed data.
-   ```python
-   def search_data(query):
-       client = QdrantClient()
-       results = client.search("pdf_data", query)
-       return
+   def get_vector_store(text_chunks, qdrant_url="http://localhost:6333"):
+       embeddings = HuggingFaceInstructEmbeddings(model_name="avsolatorio/GIST-Embedding-v0", model_kwargs={"device": "mps"})
+       vector_store = Qdrant.from_documents(
+           text_chunks,
+           embeddings,
+           url=qdrant_url,
+           collection_name="pdfs",
+           force_recreate=True,
+       )
+       return vector_store
    ```
 
 #### 8. sending the query 
+   In order to send the query to `qdrant` you again need to embed it to allow to do a similarity search over your collection of documents.
+   ```python
+   def get_response(question, qdrant_url="http://localhost:6333"):
+        embeddings = HuggingFaceInstructEmbeddings(model_name="avsolatorio/GIST-Embedding-v0", model_kwargs={"device": "mps"})
+        query_vector = embeddings.encode(question)
+        vector_store = Qdrant(url=qdrant_url, collection_name="pdfs")
+        response = vector_store.search(query_vector, top_k=1)
+        return response
+   ```
 
 ## Conclusions
 - you can build your own agent and have it respond to queries about your data quite easily
