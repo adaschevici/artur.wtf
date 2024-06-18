@@ -83,6 +83,7 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
 
 
 #### 4. Set up the UI elements
+
    - Streamlit makes it quite easy to strap together a layout for your app. You have a single script that can run via the streamlit binary:
    ```bash
    streamlit run app.py
@@ -105,6 +106,29 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
    main()
    ```
 
+   The one thing I find a bit awkward is the fact that if you have elements that need to be conditionally displayed the conditions tend to resemble the javascript pyramid of doom if you have too many conditionals in the same block.
+
+   Below is a simple example so you can see what I mean:
+   ```python
+   if len(pdf_docs) == 0:
+       st.info("Please upload some PDFs to start chatting.")
+   else:
+       with st.sidebar:
+           if st.button("Process"):
+               with st.spinner("Processing..."):
+                   # get raw content from pdf
+                   raw_text = get_text_from_pdf(pdf_docs)
+                   text_chunks = get_text_chunks(raw_text)
+
+                   if "vector_store" not in st.session_state:
+                       start = time.time()
+                       st.session_state.vector_store = get_vector_store(text_chunks)
+                       end = time.time()
+                       # create vector store for each chunk
+                       st.write(f"Time taken to create vector store: {end - start}")
+   ```
+
+   This makes me think that it is probably not designed for complex UIs but rather for quick prototyping and simple interfaces.
    
 
 #### 5. pdf data extraction
