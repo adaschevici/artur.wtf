@@ -204,6 +204,11 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
         return response
    ```
 
+#### 9. Analysis
+   You can swap out any of the components in this project with something else. You could use [`Faiss`](https://github.com/facebookresearch/faiss) instead of `qdrant`, you could use `OpenAI` models for everything(embeddings/chat completion) or you could use open models.
+
+   You can forego the UI and simply use `fastapi` to create an API to interact with the PDF documents. I hope this gives you some sense of the possibilities that are available to you when building your own `RAG` system.
+
 ## Conclusions
 - you can build your own agent and have it respond to queries about your data quite easily
 - `streamlit` is great for prototyping and building out simple interfaces
@@ -211,5 +216,4 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
 - when building `RAG` systems you need to make use of embedding models to encode your data
 - embedding models are the most taxing parts of the pipeline
 - if you have pluggable parts in your pipeline you can swap them out easily to save costs
-- 
 
