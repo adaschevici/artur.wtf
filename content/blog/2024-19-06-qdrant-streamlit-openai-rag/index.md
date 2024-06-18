@@ -148,7 +148,7 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
        return raw_text
    ```
 
-   - The extracted text can be chunked into smaller pieces that can be used to create embeddings for the `qdrant` index.
+   - The extracted text should be chunked into smaller pieces that can be used to create embeddings for the `qdrant` index.
    ```python
    def get_text_chunks(raw_text):
        text_chunks = []
