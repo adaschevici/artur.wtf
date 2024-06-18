@@ -132,10 +132,53 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
    
 
 #### 5. pdf data extraction
+   
+   - I used the `PyPDF2` library to extract the text from the pdfs. The library is quite simple to use and you can extract the text from a pdf file with a few lines of code.
+   ```python
+   import PyPDF2
+
+   def get_text_from_pdf(pdf_docs):
+       raw_text = ""
+       for pdf in pdf_docs:
+           pdf_file = pdf["file"]
+           pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+           for page_num in range(pdf_reader.numPages):
+               page = pdf_reader.getPage(page_num)
+               raw_text += page.extract_text()
+       return raw_text
+   ```
+
+   - The extracted text can be chunked into smaller pieces that can be used to create embeddings for the `qdrant` index.
+   ```python
+   def get_text_chunks(raw_text):
+       text_chunks = []
+       for i in range(0, len(raw_text), 1000):
+           text_chunks.append(raw_text[i:i + 1000])
+       return text_chunks
+   ```
 
 #### 6. Setting up the `qdrant` server via `docker`
 
 #### 7. Indexing the data
+   - The `qdrant` client can be used to index the embeddings and perform similarity search on the data.
+   ```python
+   from qdrant_client import QdrantClient
+
+   def index_data(vector_store):
+       client = QdrantClient()
+       client.create_collection("pdf_data")
+       for i, vector in enumerate(vector_store):
+           client.insert_vector("pdf_data", i, vector)
+       client.flush("pdf_data")
+   ```
+
+   - The `qdrant` client can be used to perform similarity search on the indexed data.
+   ```python
+   def search_data(query):
+       client = QdrantClient()
+       results = client.search("pdf_data", query)
+       return
+   ```
 
 #### 8. sending the query 
 
