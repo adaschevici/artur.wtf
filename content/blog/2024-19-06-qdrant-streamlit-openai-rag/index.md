@@ -158,6 +158,25 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
    ```
 
 #### 6. Setting up the `qdrant` server via `docker`
+   The best way to set up `qdrant` is to use docker and to keep track of the environment setup `docker-compose` is a nice approach. You can set up the `qdrant` server with a simple `docker-compose.yml` file like the one below:
+   ```yaml
+   version: '3.9'
+
+   services:
+     qdrant:
+       image: qdrant/qdrant:latest
+       ports:
+         - "6333:6333" # Expose Qdrant on port 6333 of the host
+       volumes:
+         - qdrant_data:/qdrant/data # Persistent storage for Qdrant data
+       environment:
+         RUST_LOG: "info" # Set logging level to info
+
+   volumes:
+     qdrant_data:
+       name: qdrant_data
+   ```
+
 
 #### 7. Indexing the data
    - The `qdrant` client can be used to index the embeddings and perform similarity search on the data. You can pick and choose the best model for embeddings for your data and swap them out if you find [a better one](https://huggingface.co/spaces/mteb/leaderboard).
