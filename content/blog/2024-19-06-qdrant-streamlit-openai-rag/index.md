@@ -216,4 +216,5 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
 - when building `RAG` systems you need to make use of embedding models to encode your data
 - embedding models are the most taxing parts of the pipeline
 - if you have pluggable parts in your pipeline you can swap them out easily to save costs
+- `pydantic` and `pydantic-settings` are great for adding type checking and validation to your python code
 
