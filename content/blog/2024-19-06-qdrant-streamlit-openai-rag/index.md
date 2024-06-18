@@ -83,11 +83,28 @@ What I wound up building is a [`Streamlit`](https://streamlit.io/) app that uses
 
 
 #### 4. Set up the UI elements
-   - Streamlit makes it extremely simple to create a layout for your app. You have a single script that can run via the streamlit binary:
+   - Streamlit makes it quite easy to strap together a layout for your app. You have a single script that can run via the streamlit binary:
    ```bash
    streamlit run app.py
    ```
-   [The gallery](https://streamlit.io/components?category=all) has many examples of various integrations and components that you can use to build your app. You have smaller components like inputs and buttons but also more complex UI tables, charts, you even have a [`ChatGPT`](https://streamlit.io/components?category=llms) style templates.
+   [The gallery](https://streamlit.io/components?category=all) has many examples of various integrations and components that you can use to build your app. You have smaller components like inputs and buttons but also more complex UI tables, charts, you even have [`ChatGPT`](https://streamlit.io/components?category=llms) style templates.
+
+   For our chat interface we require very few elements. Generally to create them you only need to use streamlit to initialize the UI.
+   ```python
+   import streamlit as st
+   ...
+   def main():
+       st.title("ChatGPT-4 Replica")
+       st.write("Ask me anything about the data")
+       question = st.text_input("Ask me anything")
+       if st.button("Ask"):
+           st.write("I'm thinking...")
+           response = get_response(question)
+           st.write(response)
+   ...
+   main()
+   ```
+
    
 
 #### 5. pdf data extraction
