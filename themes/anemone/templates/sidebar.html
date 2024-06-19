@@ -6,6 +6,7 @@
     {% set github = load_data(path="themes/anemone/static/social_icons/github.svg") %}
     {% set twitter = load_data(path="themes/anemone/static/social_icons/twitter.svg") %}
     {% set linkedin = load_data(path="themes/anemone/static/social_icons/linkedin.svg") %}
+    {% set rss = load_data(path="themes/anemone/static/social_icons/rss.svg") %}
 
     <ul class="social-icons">
         <li class="social-icon">
@@ -22,6 +23,12 @@
             <a href="https://www.linkedin.com/in/artur-daschevici-b5404815" title="LinkedIn"
                 aria-label="LinkedIn">
                 {{ linkedin | safe }}
+            </a>
+        </li>
+        <li class="social-icon" id="rss-feed">
+            <a href="https://www.linkedin.com/in/artur-daschevici-b5404815" title="RSS Feed"
+                aria-label="RSS Feed">
+                {{ rss | safe }}
             </a>
         </li>
     </ul>
