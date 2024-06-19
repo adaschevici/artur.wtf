@@ -14,7 +14,7 @@
 }
 
 [data-termynal] {
-    width: 750px;
+    width: 90%;
     max-width: 100%;
     background: var(--color-bg);
     color: var(--color-text);
@@ -300,11 +300,6 @@
         let container = line.closest('[data-termynal]');
         if (container) new Termynal(container);
     });
-  //   if (document.currentScript.hasAttribute('data-termynal-container')) {
-  //       const containers = document.currentScript.getAttribute('data-termynal-container');
-  //       containers.split('|')
-  //           .forEach(container => new Termynal(container))
-  //   }
    });
 </script>
 <div id="termynal" data-termynal data-ty-typeDelay="40" data-ty-lineDelay="700">
