@@ -2,7 +2,8 @@
 title = "Building my own chatgpt agent replica on OpenAI's GPT-4"
 date = 2024-06-19
 draft = false
-tags = ["openai", "gpt-4", "rag", "qdrant", "streamlit"]
+[taxonomies]
+    tags = ["openai", "gpt-4", "rag", "qdrant", "streamlit"]
 +++
 
 ## Why?
