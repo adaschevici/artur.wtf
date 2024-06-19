@@ -8,6 +8,13 @@ paginate_by = 3
 +++
 
 
+# TIL: :sweat_smile: 19th June 2024
+I use fish shell so interpolation of commands is different but you don't need to use your default shell, you can pass it into the shell that works.
+A quick way to grab and triage recent screenshots from your desktop is by using the command line:
+```sh
+zsh -c "find ~/Desktop -maxdepth 1 -type f -name \"<regex| eg *.png>\" -mtime -<days-ago|eg 2> -exec mv {} ~/Pictures/Screenshots \;"
+```
+
 # TIL: :sweat_smile: 16th June 2024
 Converting build from `webpack` to `vite` is tricky because some loaders are not supported, and the structure is not one to one translatable. Tried it with `wasm` from [here](https://rustwasm.github.io/wasm-bindgen/examples/hello-world.html) and the build config for `vite` is as follows:
 ```js
