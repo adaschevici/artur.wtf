@@ -146,6 +146,11 @@ body {
   margin-top: -2px;
 }
 
+#rss-feed svg {
+  margin-left: -2px;
+  height: 4rem;
+}
+
 h1 {
   font-size: 2.8rem;
   color: var(--bgColor);
