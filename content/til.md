@@ -32,7 +32,9 @@ export default defineConfig({
 });
 ```
 
-# TIL: :mind_blown: 11th June 2024
+
+# TIL: 🤯 11th June 2024
+ 11th June 2024
 In order to send keys from lua to nvim you need to use the following nested syntax, and if you want to separate it into a function:
 ```lua
 _G.send_keys = function(keys)
