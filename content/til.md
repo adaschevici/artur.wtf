@@ -8,6 +8,13 @@ paginate_by = 3
 +++
 
 
+# TIL: :exploding_head: 24th June 2024
+You can find code for a browser extension by looking at the path `~/Library/Application Support/Google/Chrome/<Profile N>/Extensions` on OSX.
+A simple bash command to find the path is:
+```sh
+latest_plugin=$(find "$CHROME_EXTENSIONS_DIR" -maxdepth 1 -type d ! -name "*Temp" ! -name "*Extensions" -exec stat -f '%B %N' {} + | sort -nr | tail -n 1 | cut -d' ' -f2-)
+```
+
 # TIL: :sweat_smile: 19th June 2024
 I use fish shell so interpolation of commands is different but you don't need to use your default shell, you can pass it into the shell that works.
 A quick way to grab and triage recent screenshots from your desktop is by using the command line:
