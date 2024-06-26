@@ -8,6 +8,10 @@ paginate_by = 3
 +++
 
 
+# TIL: :sweat_smile: 26th June 2024
+I liked the movie `The Boondock Saints` when it came out but never knew the term `boondock` was an actual slang term. Definition from quora goes something like this:
+"In the context of RVing, boondocking is sometimes used interchangeably with terms like "dry camping" or "dispersed camping,"
+
 # TIL: :exploding_head: 24th June 2024
 You can find code for a browser extension by looking at the path `~/Library/Application Support/Google/Chrome/<Profile N>/Extensions` on OSX.
 A simple bash command to find the path is:
