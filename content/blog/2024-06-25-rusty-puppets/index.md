@@ -24,3 +24,8 @@ In `rust` there are several libraries that deal with browser automation, a few I
 
 As I was reading one of my older posts that focuses on quasi live coding I realized it was boring as hell, and if your attention span is that of a goldfish, like mine is, it would probably make sense to just drop in a link to the [repo](https://github.com/adaschevici/rustic-toy-chest/tree/main/rust-crawl-pupp) so that you can download the code and try it out yourself. The repo is a collection of rust prototypes that I have been building for fun and learning, haven't had yet a compelling reason to use rust in production unfortunately :cry:.
 
+## How?
+
+To my surprise the code was closer in structure to the [`puppeteer`](https://pptr.dev/) version than it was to the [`chromedp`](https://github.com/chromedp/chromedp). The `chromedp` version uses nested context declarations to pass in browser and page runtimes, the `rust` version uses a more linear approach. You construct a browser instance and then you can interact with it as a user would. This points at the fact that the `chromiumoxide` api is higher level. 
+
+The way you can set things up to keep your use cases separate is by adding [`clap`](https://docs.rs/clap/latest/clap/) to your project and use command line flags to select the use case you want to run.
