@@ -190,7 +190,7 @@ You will see that I have covered most cases but not everything is transferable f
   ...
 
   ```
-  __d. When the page has infinite scroll__ you will have to scroll to the bottom of the page to be able to collect all the elements you are interested in
+  __d. When the page has infinite scroll__ you will have to scroll to the bottom of the page to be able to collect all the elements you are interested in. To achieve this you need to inject `javascript` into the page context and trigger a run of the function. The `chromiumoxide` api seems to have really decent support for this, I faced much less resistance than I did with `chromedp` and `go`. 
   ```rust
   let js_script = r#"
       async () => {
