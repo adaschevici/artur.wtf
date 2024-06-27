@@ -1,5 +1,5 @@
 +++
-title = "Scraping with rust and headless chrome"
+title = "Scraping with rust and headless chrome (Part I)"
 date = 2024-06-27
 draft = true
 [taxonomies]
@@ -232,5 +232,54 @@ You will see that I have covered most cases but not everything is transferable f
   ```
 
 #### 4. Fixtures to replicate various scenarios
+  Some websites, actually most websites have some sort of delay for loading different parts of the page, in order to prevent blocking the entire page. To replicate this behavior fixtures can be used to inject nodes into the dom with a delay.
+  
+  The HTML is really basic:
+  ```html
+  <div id="container">
+      <!-- New node will be appended here -->
+  </div>
+
+  <script src="script.js"></script>
+  ```
+
+  The `script.js` file is slightly more, but still fairly straightforward:
+  ```javascript
+  document.addEventListener('DOMContentLoaded', () => {
+    // Function to create and append the new node
+    function createDelayedNode() {
+      // Create a new div element
+      const newNode = document.createElement('div');
+
+      // Add some content to the new node
+      newNode.textContent = 'This is a new node added after a delay.';
+
+      // Add some styles to the new node
+      newNode.style.padding = '10px';
+      newNode.style.marginTop = '10px';
+      newNode.style.backgroundColor = '#f0f0f0';
+      newNode.style.border = '1px solid #ccc';
+      newNode.id = 'come-find-me';
+
+      // Append the new node to the container
+      const container = document.getElementById('container');
+      container.appendChild(newNode);
+    }
+
+    // Set a delay (in milliseconds)
+    const delay = 3000; // 3000ms = 3 seconds
+
+    // Use setTimeout to create and append the node after the delay
+    setTimeout(createDelayedNode, delay);
+  });
+  ```
+  What it will do is create a new node with some text content and some styles, then append it to the container div after a delay of 3 seconds.
+
+## Why to be continued?
+What I hate more than `to be continued` in a TV show where I don't have the next episode available is a blog post that has code that looks reasonable and that it might work, but doesn't. So going by the lesser of two evils principle I decided to make this a two parter which will give me the time to write and test the other use cases in order to make sure everything works as expected.
 
 ## Conclusions
+- This is one of the few times I have stuck with `rust` through the pain and I have to say it was a better experience than I had with `go` and `chromedp`
+- writing the code was slightly faster since there was less boilerplate to write
+- messing around with wrappers and `unwrap()` was challenging but probably in time it gets easier
+- the code in `rust` looks more like `puppeteer` than the `go` version did
