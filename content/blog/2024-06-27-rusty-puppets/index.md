@@ -215,5 +215,22 @@ You will see that I have covered most cases but not everything is transferable f
       .await?;
   page.evaluate_function(js_script).await?;
   ```
+  __e. When you need to wait for an element to load__, this was not exactly part of the `chromiumoxide` api so I had to hack it together. Given my limited rust expertise there probably a better way to do this but this is what I managed to come up with. If the async block runs over the timeout then the `element_result` will be an error, otherwise poll the dom for the element we are looking for.
+  ```rust
+  use tokio::time::{timeout, Duration};
+  ...
+  let element_result = timeout(timeout_duration, async {
+      loop {
+          match page.find_element(selector).await {
+              Ok(element) => return Ok(element),
+              Err(e) => tokio::time::sleep(Duration::from_millis(100)).await,
+          }
+          // Wait for a short interval before checking again
+      }
+  })
+  .await;
+  ```
+
+#### 4. Fixtures to replicate various scenarios
 
 ## Conclusions
