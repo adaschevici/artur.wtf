@@ -26,6 +26,62 @@ As I was reading one of my older posts that focuses on quasi live coding I reali
 
 ## How?
 
-To my surprise the code was closer in structure to the [`puppeteer`](https://pptr.dev/) version than it was to the [`chromedp`](https://github.com/chromedp/chromedp). The `chromedp` version uses nested context declarations to pass in browser and page runtimes, the `rust` version uses a more linear approach. You construct a browser instance and then you can interact with it as a user would. This points at the fact that the `chromiumoxide` api is higher level. 
+To my surprise the code was closer in structure to the [`puppeteer`](https://pptr.dev/) version than it was to the [`chromedp`](https://github.com/chromedp/chromedp). The `chromedp` version uses nested context declarations to manage the browser and page runtimes, the `rust` version uses a more linear approach. You construct a browser instance and then you can interact with it as a user would. This points at the fact that the `chromiumoxide` api is higher level. 
 
 The way you can set things up to keep your use cases separate is by adding [`clap`](https://docs.rs/clap/latest/clap/) to your project and use command line flags to select the use case you want to run.
+
+You will see that I have covered most cases but not everything is transferable from `puppeteer` or `chromedp` to the `chromiumoxide` version. I will not go through the setup of `rustup`, rust toolchain or `cargo` as this is a basic and well documented process, all you have to do is search for `getting started with rust` and you will find a bunch of resources.
+
+## Show me the code
+
+#### 1. Laying down the foundation
+
+  - set up my project root
+    ```bash
+    cargo new rust-crawl-pupp
+    cd rust-crawl-pupp
+    cargo install cargo-edit # this is useful for adding and upgrading dependencies
+    ```
+  - add dependencies via `cargo add` 
+    ```toml
+    [dependencies]
+    chromiumoxide = { version = "0.5.7", features = ["tokio", "tokio-runtime"] } # this is the main dependency
+    chromiumoxide_cdp = "0.5.2" # this is the devtools protocol
+    clap = { version = "4.5.7", features = ["derive", "cargo"] } # this is for command line parsing
+    futures = "0.3.30" # this is for async programming
+    tokio = { version = "1.38.0", features = ["full"] } # this is the async runtime
+    tracing = "0.1.40" # this is for logging
+    tracing-subscriber = { version = "0.3.18", features = ["registry", "env-filter"] } # this is for logging
+    ```
+
+  - add `clap` command line parsing to the project so that each different use case can be called via a subcommand
+    define your imports
+
+    ```rust
+    use clap::{Parser, Subcommand};
+    ```
+
+    define your command structs for parsing the command line arguments
+
+    ```rust
+    #[derive(Parser)]
+    #[command(
+        name = "OxideCrawler",
+        version = "0.1",
+        author = "artur",
+        about = "An example application using clap"
+    )]
+    struct Cli {
+        #[command(subcommand)]
+        command: Commands,
+    }
+    #[derive(Subcommand, Debug)]
+    enum Commands {
+        FirstProject {},
+        SecondProject {},
+        ...
+    }
+    ```
+
+
+## Conclusions
