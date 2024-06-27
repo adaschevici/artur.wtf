@@ -1,7 +1,7 @@
 +++
 title = "Scraping with rust and headless chrome (Part I)"
 date = 2024-06-27
-draft = true
+draft = false
 [taxonomies]
 tags = ["rust", "web scraping", "headless chrome"]
 +++
