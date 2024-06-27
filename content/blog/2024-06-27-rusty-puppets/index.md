@@ -1,6 +1,6 @@
 +++
 title = "Scraping with rust and headless chrome"
-date = 2024-06-25
+date = 2024-06-27
 draft = true
 [taxonomies]
 tags = ["rust", "web scraping", "headless chrome"]
@@ -99,5 +99,44 @@ You will see that I have covered most cases but not everything is transferable f
     }
 
     ```
+#### 2. Starting browser and the browser cleanup
+  - use the `launch` method and its options to start the browser, if the viewport and window size are different, the browser will start in windowed mode, with the page size being smaller.
+    ```rust
+    let (mut browser, mut handler) = Browser::launch(
+        BrowserConfig::builder()
+            .with_head() // this will start the browser in headless mode
+            .no_sandbox() // this will disable the sandbox
+            .viewport(None) // this will set the viewport size
+            .window_size(1400, 1600) // this will set the window size
+            .build()?,
+    )
+    .await?;
+
+    let handle = tokio::task::spawn(async move {
+        loop {
+            match handler.next().await {
+                Some(h) => match h {
+                    Ok(_) => continue,
+                    Err(_) => break,
+                },
+                None => break,
+            }
+        }
+    });
+    ```
+  - the browser cleanup needs to be done correctly and there are two symptoms that you will see if you missed anything:
+    - the browser will not close - hangs at the end
+    - you might get a warning like the following:
+      ```bash
+      2024-06-26T08:40:01.418414Z  WARN chromiumoxide::browser: Browser was not closed manually, it will be killed automatically in the background
+      ```
+    to correctly clean up your browser instance you will have to call these on the code paths that close the browser
+    ```rust
+    browser.close().await?;
+    browser.wait().await?;
+    handle.await?;
+    ```
+
+        
 
 ## Conclusions
