@@ -137,6 +137,29 @@ You will see that I have covered most cases but not everything is transferable f
     handle.await?;
     ```
 
-        
+#### 3. Use cases
+  In the [repo](https://github.com/adaschevici/rustic-toy-chest/tree/main/rust-crawl-pupp) each use case lives in its own module most of the time. There are some cases where you might have two living in the same module when they are very closely related, like in Use Case `c.`.
+
+  a. Spoof your user agent:
+    The only way I have found to set your user agent was from the [`Page`](https://docs.rs/chromiumoxide/latest/chromiumoxide/page/struct.Page.html#) module via the `set_user_agent` method
+
+  ```rust
+  let page = browser.new_page("about:blank").await?;
+  page.set_user_agent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) \
+       Chrome/58.0.3029.110 Safari/537.36",
+  )
+  .await?;
+  page.goto("https://www.whatismybrowser.com/detect/what-is-my-user-agent")
+      .await?;
+
+  ```
+  b. Grab the full content of the page is pretty straightforward
+  ```rust
+      let page = browser
+        .new_page("https://scrapingclub.com/exercise/list_infinite_scroll/")
+        .await?;
+    let content = page.content().await?;
+  ```
 
 ## Conclusions
