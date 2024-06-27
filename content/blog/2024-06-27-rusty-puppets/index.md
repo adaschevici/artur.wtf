@@ -232,7 +232,7 @@ You will see that I have covered most cases but not everything is transferable f
   ```
 
 #### 4. Fixtures to replicate various scenarios
-  Some websites, actually most websites have some sort of delay for loading different parts of the page, in order to prevent blocking the entire page. To replicate this behavior fixtures can be used to inject nodes into the dom with a delay.
+  Some websites, actually most websites have some sort of delay for loading different parts of the page, in order to prevent blocking the entire page. To replicate this behavior fixtures can be used to inject nodes into the dom with a delay. For the more edge case scenarios I created fixtures to emulate edge behaviors while not actually having to remember a website that is live and behaves like that.
   
   The HTML is really basic:
   ```html
@@ -283,3 +283,5 @@ What I hate more than `to be continued` in a TV show where I don't have the next
 - writing the code was slightly faster since there was less boilerplate to write
 - messing around with wrappers and `unwrap()` was challenging but probably in time it gets easier
 - the code in `rust` looks more like `puppeteer` than the `go` version did
+
+#### In Part II I will cover dealing with bot protection, handling frames, forms and more. Stay tuned!
