@@ -140,8 +140,9 @@ You will see that I have covered most cases but not everything is transferable f
 #### 3. Use cases
   In the [repo](https://github.com/adaschevici/rustic-toy-chest/tree/main/rust-crawl-pupp) each use case lives in its own module most of the time. There are some cases where you might have two living in the same module when they are very closely related, like in Use Case `c.`.
 
-  a. Spoof your user agent:
-    The only way I have found to set your user agent was from the [`Page`](https://docs.rs/chromiumoxide/latest/chromiumoxide/page/struct.Page.html#) module via the `set_user_agent` method
+  __a. Spoof your user agent:__
+
+  The only way I have found to set your user agent was from the [`Page`](https://docs.rs/chromiumoxide/latest/chromiumoxide/page/struct.Page.html#) module via the `set_user_agent` method
 
   ```rust
   let page = browser.new_page("about:blank").await?;
@@ -154,12 +155,65 @@ You will see that I have covered most cases but not everything is transferable f
       .await?;
 
   ```
-  b. Grab the full content of the page is pretty straightforward
+  __b. Grabbing the full content of the page__ is pretty straightforward
   ```rust
       let page = browser
         .new_page("https://scrapingclub.com/exercise/list_infinite_scroll/")
         .await?;
     let content = page.content().await?;
+  ```
+  __c. Grabbing elements via css selectors__,
+
+  ```rust
+  let elements_on_page = page.find_elements(".post").await?;
+  let elements = stream::iter(elements_on_page)
+      .then(|e| async move {
+          let el_text = e.inner_text().await.ok();
+          match el_text {
+              Some(text) => text,
+              None => None,
+          }
+      })
+      .filter_map(|x| async { x })
+      .collect::<Vec<_>>()
+      .await;
+  ```
+  performing __relative selection__ from a specific node and mapping the content to `rust` types
+  ```rust
+  ...
+  let product_name = e.find_element("h4").await?.inner_text().await?.unwrap();
+  let product_price = e.find_element("h5").await?.inner_text().await?.unwrap();
+  Ok(Product {
+      name: product_name,
+      price: product_price,
+  })
+  ...
+
+  ```
+  __d. When the page has infinite scroll__ you will have to scroll to the bottom of the page to be able to collect all the elements you are interested in
+  ```rust
+  let js_script = r#"
+      async () => {
+        await new Promise((resolve, reject) => {
+          var totalHeight = 0;
+          var distance = 300; // should be less than or equal to window.innerHeight
+          var timer = setInterval(() => {
+            var scrollHeight = document.body.scrollHeight;
+            window.scrollBy(0, distance);
+            totalHeight += distance;
+
+            if (totalHeight >= scrollHeight) {
+              clearInterval(timer);
+              resolve();
+            }
+          }, 500);
+        });
+    }
+  "#;
+  let page = browser
+      .new_page("https://scrapingclub.com/exercise/list_infinite_scroll/")
+      .await?;
+  page.evaluate_function(js_script).await?;
   ```
 
 ## Conclusions
