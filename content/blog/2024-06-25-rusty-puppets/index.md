@@ -15,6 +15,8 @@ The experience using `go` with `chromedp` to automate chrome was pretty good, it
 
 ## What?
 
+{{ img(id="rusty-puppets.png", alt="Puppeteer puppeteering rusty humans", caption="Rusty puppeteer") }}
+
 In `rust` there are several libraries that deal with browser automation, a few I have had a look at are:
 - [fantocini](https://github.com/jonhoo/fantoccini) - A high-level API for programmatically interacting with web pages through WebDriver, but I want chrome devtools protocol instead.
 - [rust-headless-chrome](https://github.com/rust-headless-chrome/rust-headless-chrome) - chrome devtools protocol client library in rust, not as active as the crate I wound up using.
