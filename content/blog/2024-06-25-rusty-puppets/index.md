@@ -63,7 +63,7 @@ You will see that I have covered most cases but not everything is transferable f
     use clap::{Parser, Subcommand};
     ```
 
-    define your command structs for parsing the command line arguments
+    define your command structs for parsing the command line arguments, this will allow for each use case to be called with its own subcommand like so `cargo run -- first-project`, `cargo run -- second-project`, and so on.
 
     ```rust
     #[derive(Parser)]
@@ -85,5 +85,19 @@ You will see that I have covered most cases but not everything is transferable f
     }
     ```
 
+    the way you can hook this into the main function is via a `match` statement that will call the appropriate function based on the subcommand that was passed in.
+
+    ```rust
+    let args = Cli::parse();
+    ...
+    match &args.command {
+        Commands::FirstProject {} => {
+            let user_agent = spoof_user_agent(&mut browser).await?;
+            info!(user_agent, "User agent detected");
+        }
+        ...
+    }
+
+    ```
 
 ## Conclusions
