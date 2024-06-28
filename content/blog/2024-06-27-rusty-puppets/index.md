@@ -223,9 +223,9 @@ You will see that I have covered most cases but not everything is transferable f
       loop {
           match page.find_element(selector).await {
               Ok(element) => return Ok(element),
+              // Wait for a short interval before checking again
               Err(e) => tokio::time::sleep(Duration::from_millis(100)).await,
           }
-          // Wait for a short interval before checking again
       }
   })
   .await;
