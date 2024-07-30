@@ -8,6 +8,9 @@ paginate_by = 3
 +++
 
 
+# TIL: :sweat_smile: 30th July 2024
+Magnum opus means a great work, and it is a Latin term that means "great work". It is used to describe the greatest work of an artist, writer, or composer.
+
 # TIL: :sweat_smile: 4th July 2024
 The term `cargo cult` originated from the natives of the South Pacific that dressed like military personnel in the hopes that cargo crates would drop from the sky. The term is now used to describe a ritual that has lost its original meaning and is now performed for its own sake.
 
