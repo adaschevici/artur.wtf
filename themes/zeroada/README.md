@@ -1,8 +1,8 @@
-# anemone
+# zeroada
 
-Introducing "anemone," a minimalist [Zola](https://www.getzola.org) theme that prioritizes clean CSS and avoids heavy JavaScript. Enjoy a seamless user experience with lightning-fast load times. Let your content take center stage in a clutter-free, elegant design that enhances readability. Responsive and efficient, anemone brings focus to your ideas.
+Introducing "zeroada," a minimalist [Zola](https://www.getzola.org) theme that prioritizes clean CSS and avoids heavy JavaScript. Enjoy a seamless user experience with lightning-fast load times. Let your content take center stage in a clutter-free, elegant design that enhances readability. Responsive and efficient, zeroada brings focus to your ideas.
 
-You can browse the demo website [here](https://anemone.pages.dev/)
+You can browse the demo website [here](https://zeroada.pages.dev/)
 I also use it on my own [website.](https://speyllsite.pages.dev/)
 
 Anemone is a versatile Zola theme that comes with both light and dark variants. You can easily switch between the light and dark themes to suit your preferences.
@@ -17,13 +17,13 @@ To get started with Anemone, follow these simple steps:
 
 ```bash
 cd themes
-git clone https://github.com/Speyll/anemone
+git clone https://github.com/Speyll/zeroada
 ```
 
 2. Enable Anemone in your `config.toml`:
 
 ```toml
-theme = "anemone"
+theme = "zeroada"
 ```
 
 ### Options
@@ -55,7 +55,7 @@ The theme has a built-in feature that allows you to use multiple languages. For 
 ```toml
 [languages.fr]
 weight = 2
-title = "anemone"
+title = "zeroada"
 languageName = "Français"
 languageCode = "fr"
 ```
