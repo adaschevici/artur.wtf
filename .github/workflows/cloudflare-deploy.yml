@@ -19,17 +19,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Evict Cargo Cache (if needed)
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.clear_cache == 'true' }} # Trigger manually
+        run: |
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+          gh cache delete --all --ref ${{ github.ref }}
+
+      - name: Cache APT packages
+        uses: actions/cache@v3
+        with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-packages.txt') }}
+
+      - name: Install OS Dependencies (if needed)
+        run: |
+          # Create a file listing your required packages, one per line.
+          cat > apt-packages.txt << EOF
+          nasm
+          # ... other packages ...
+          EOF
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $(cat apt-packages.txt)
+
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           rustup toolchain install nightly
           rustup default nightly
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
-
-      - name: Install library dependencies
-        run: |
-          sudo apt update
-          sudo apt install nasm
 
       - name: Verify Rust Installation
         run: |
