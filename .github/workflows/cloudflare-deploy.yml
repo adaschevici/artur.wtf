@@ -26,6 +26,11 @@ jobs:
           rustup default nightly
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
 
+      - name: Install library dependencies
+        run: |
+          sudo apt update
+          sudo apt install nasm
+
       - name: Verify Rust Installation
         run: |
           rustup --version
