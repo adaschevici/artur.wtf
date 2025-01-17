@@ -36,7 +36,6 @@ jobs:
           # Create a file listing your required packages, one per line.
           cat > apt-packages.txt << EOF
           nasm
-          # ... other packages ...
           EOF
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends $(cat apt-packages.txt)
