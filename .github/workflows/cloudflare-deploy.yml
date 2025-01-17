@@ -42,6 +42,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends $(cat apt-packages.txt)
 
+      - name: Cache Rust toolchain
+        uses: actions/cache@v3
+        with:
+          path: ~/.rustup
+          key: ${{ runner.os }}-rustup-${{ hashFiles('rust-toolchain') }}
+          restore-keys: |
+            ${{ runner.os }}-rustup-
+
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
