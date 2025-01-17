@@ -8,6 +8,9 @@ on:
     branches:
       - main # Optional: Change this to the branch you want to trigger the action for PRs
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,10 +22,13 @@ jobs:
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          rustup toolchain install nightly
+          rustup default nightly
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
 
       - name: Verify Rust Installation
         run: |
+          rustup --version
           rustc --version
           cargo --version
 
