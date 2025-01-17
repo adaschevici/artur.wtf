@@ -61,7 +61,7 @@ jobs:
           path: |
             ~/.cargo/registry
             ~/.cargo/git
-            target
+            ./helpers/image-optimizer/target
           key: ${{ runner.os }}-manual-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Build CLI tool
