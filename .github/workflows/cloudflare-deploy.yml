@@ -19,12 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Evict Cargo Cache (if needed)
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.clear_cache == 'true' }} # Trigger manually
-        run: |
-          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
-          gh cache delete --all --ref ${{ github.ref }}
-
       - name: Cache APT packages
         uses: actions/cache@v3
         with:
