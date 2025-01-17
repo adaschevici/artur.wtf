@@ -32,6 +32,22 @@ jobs:
           rustc --version
           cargo --version
 
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-manual-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Build CLI tool
+        run: |
+          cargo build --manifest-path ./helpers/image-optimizer/Cargo.toml --release --verbose
+
+      - name: Perform the optimization
+        run: ./helpers/image-optimizer/target/release/image-optimizer
+
       # - name: Install Zola
       #   run: |
       #     curl -L https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz -o zola.tar.gz
