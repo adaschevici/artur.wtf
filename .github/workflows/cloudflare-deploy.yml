@@ -73,21 +73,21 @@ jobs:
       - name: Perform the optimization
         run: ./helpers/image-optimizer/target/release/image-optimizer
 
-      # - name: Install Zola
-      #   run: |
-      #     curl -L https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz -o zola.tar.gz
-      #     tar -xzf zola.tar.gz
-      #     sudo mv zola /usr/local/bin/
-      #     zola --version
-      #
-      # - name: Build the site
-      #   run: zola build
-      #
-      # - name: Install Wrangler CLI
-      #   run: npm install -g wrangler
-      #
-      # - name: Publish to Cloudflare Pages
-      #   env:
-      #     CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      #   run: |
-      #     wrangler pages deploy public --project-name=artur-wtf --branch=main
+      - name: Install Zola
+        run: |
+          curl -L https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz -o zola.tar.gz
+          tar -xzf zola.tar.gz
+          sudo mv zola /usr/local/bin/
+          zola --version
+
+      - name: Build the site
+        run: zola build
+
+      - name: Install Wrangler CLI
+        run: npm install -g wrangler
+
+      - name: Publish to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          wrangler pages deploy public --project-name=artur-wtf --branch=main
