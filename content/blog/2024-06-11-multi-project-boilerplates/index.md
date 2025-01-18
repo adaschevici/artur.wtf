@@ -23,13 +23,14 @@ scratcher.nvim/
 └── plugin
     └── scratcher.lua
 ```
+
 The standard way of naming things seems to be gravitating towards having some conventions as you can see so setting up a new plugin would be pretty much repetitive and automatable. And it will probably save you some time and willpower in the long run, provided you have some sense of what your final architecture needs to look like.
 
-{{ img(id="copier.png", alt="Copier clones") }}
+{{ img(id="copier", alt="Copier clones") }}
 
 ## How?
 
-If you are coming from `python` like I am then you may already  be familiar with [`cookiecutter`](https://github.com/cookiecutter/cookiecutter). I have been in the situation a few times where it might have made sense to use it, but every time it was a matter of balancing out the timeline and trying to stay away from over engineering.
+If you are coming from `python` like I am then you may already be familiar with [`cookiecutter`](https://github.com/cookiecutter/cookiecutter). I have been in the situation a few times where it might have made sense to use it, but every time it was a matter of balancing out the timeline and trying to stay away from over engineering.
 
 Lately though the stuff I have been dealing with has been slightly on the more experimental side so churning out something new is something that happens quite often, so it makes more sense to have a prebaked architecture for specific project styles.
 
@@ -44,70 +45,79 @@ Another neat thing is that when you have decent chunks of code that can be share
 ## Cherry pick of features
 
 There are a few notable features that I would kick myself if I didn't mention:
+
 - you can define choices for your options by using the `choices` key in your `copier.yml` file:
-    ```yaml
-    project_type:
-    type: str
-    help: What type of project are you creating?
-    default: neovim-plugin
-    choices:
-        - neovim-plugin
-        - golang-cli
-        - python-cli
-    ```
+
+  ```yaml
+  project_type:
+  type: str
+  help: What type of project are you creating?
+  default: neovim-plugin
+  choices:
+    - neovim-plugin
+    - golang-cli
+    - python-cli
+  ```
 
 - you can include different files in the root level `copier.yml` thus breaking down the wizard in composable parts, for example the CI/CD parts can be shared across projects
-    ```yaml
-    !include shared-conf/ci-cd.*.yml
-    ```
+
+  ```yaml
+  !include shared-conf/ci-cd.*.yml
+  ```
 
 - defaults are very powerful and can also make use of current runtime context which is quite nice. Essentially you can think of it as a way to have your very own project wizard that is tweaked for every one of your needs.
 
-
 ## Cool use-cases
+
 - you can define a folder/file be created conditionally depending on an option selection eg:
 
-    You define your `copier.yml` like this to give you a choice into the type of project:
-    ```yaml
-    project_type:
-    type: str
-    help: What type of project are you creating?
-    default: neovim-plugin
-    choices:
-        - neovim-plugin
-        - golang-cli
-        - python-cli
-    ```
+  You define your `copier.yml` like this to give you a choice into the type of project:
 
-    you then create a conditionally rendered folder, the naming follows `jinja` templating rules, so it might look something like the following
-    ```bash
-    {% if project_type == 'neovim-plugin' %}{{project_name}}.nvim{% endif %}
-    ```
-    It looks a bit strange, it will probably not work on Windows and it might look daunting at first but hopefully you will only need to revisit the hierarchy when you update your project structure template. This is not something I would expect to happen very often.
+  ```yaml
+  project_type:
+  type: str
+  help: What type of project are you creating?
+  default: neovim-plugin
+  choices:
+    - neovim-plugin
+    - golang-cli
+    - python-cli
+  ```
+
+  you then create a conditionally rendered folder, the naming follows `jinja` templating rules, so it might look something like the following
+
+  ```bash
+  {% if project_type == 'neovim-plugin' %}{{project_name}}.nvim{% endif %}
+  ```
+
+  It looks a bit strange, it will probably not work on Windows and it might look daunting at first but hopefully you will only need to revisit the hierarchy when you update your project structure template. This is not something I would expect to happen very often.
 
 - in more advanced use cases you may need to write some custom python code for transforming/processing of entities in your `jinja` templates, or template strings.
-    To hook this in you need to enable the `jinja` template extensions and add a separate package `copier-templates-extensions`
-    ```yaml
-    _jinja_extensions:
+  To hook this in you need to enable the `jinja` template extensions and add a separate package `copier-templates-extensions`
+
+  ```yaml
+  _jinja_extensions:
     - copier_templates_extensions.TemplateExtensionLoader
     - extensions/context.py:ContextUpdater
-    ```
-    This allows you to load specific extensions in your project generator runtime and it can serve different functions. The following snippet illustrates a way you can update the context:
-    ```python
-    from copier_templates_extensions import ContextHook
+  ```
+
+  This allows you to load specific extensions in your project generator runtime and it can serve different functions. The following snippet illustrates a way you can update the context:
+
+  ```python
+  from copier_templates_extensions import ContextHook
 
 
-    class ContextUpdater(ContextHook):
-        def hook(self, context):
-            new_context = {}
-            new_context["onboarding"] = "first steps with " + context["project-type"]
-            return new_context
-    ```
+  class ContextUpdater(ContextHook):
+      def hook(self, context):
+          new_context = {}
+          new_context["onboarding"] = "first steps with " + context["project-type"]
+          return new_context
+  ```
 
-    For example you might decide to create a file called "first steps with <project-type>.txt" once the project is generated. In template form the file name would be `{{ onboarding }}`
+  For example you might decide to create a file called "first steps with <project-type>.txt" once the project is generated. In template form the file name would be `{{ onboarding }}`
 
+## Conclusions
 
-## Conclusions:
 - you can build hybrid boilerplates for your project and drive generating the folder hierarchy from a single repo
 - the notation is a bit weird with templated folder names, will not work on Win
 - the templated naming is also very powerful allowing for conditional creation of folders
