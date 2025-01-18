@@ -1,7 +1,13 @@
 <!-- FILEPATH: /Users/zero/projects/blog-pg/artur.wtf/themes/zeroada/sidebar.html -->
     <div class="logo">
+        {% set image_avif = get_url(path="/assets/logo.avif") %}
+        {% set image_webp = get_url(path="/assets/logo.webp") %}
         {% set image = get_url(path="/assets/logo.jpg") %}
-        <img src="{{ image }}" class="img-logo" alt="Logo">
+        <picture>
+          <source srcset="{{ image_avif }}" {% if alt %}alt="{{alt}}"{% endif %} />
+          <source srcset="{{ image_webp }}" {% if alt %}alt="{{alt}}"{% endif %} />
+          <img src="{{ image }}" class="img-logo" alt="Logo">
+        </picture>
     </div>
     {% set github = load_data(path="themes/zeroada/static/social_icons/github.svg") %}
     {% set twitter = load_data(path="themes/zeroada/static/social_icons/twitter.svg") %}
