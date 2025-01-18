@@ -5,10 +5,15 @@ title = "Article de Présentation"
 Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus.
 
 # Titre d'exemple 1
+
 ## Titre d'exemple 2
+
 ### Titre d'exemple 3
+
 #### Titre d'exemple 4
+
 ##### Titre d'exemple 5
+
 ###### Titre d'exemple 6
 
 Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.
@@ -39,7 +44,7 @@ Voici un bloc de citation :
 Maintenant un peu de code :
 
 ```js
-const ultimateTruth = 'ce thème est le meilleur !';
+const ultimateTruth = "ce thème est le meilleur !";
 console.log(ultimateTruth);
 ```
 
@@ -49,23 +54,19 @@ Et voici du `code en ligne` !
 
 Maintenant un tableau :
 
-| Tables        | Sont          | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 est     | alignée à droite| $1600 |
-| col 2 est     | centrée       |   $12 |
-| zèbre         | est sympa     |    $1 |
-
-## Images
-
-{{ img(id="https://uploads-ssl.webflow.com/5ff0b3326e5782a256714165/638b6f3a3d8d2e6bad1cb03b_Random22.1.jpg", alt="logo du thème") }}
-
-image aléatoire d'un chien[^4]
+| Tables    |       Sont       |  Cool |
+| --------- | :--------------: | ----: |
+| col 3 est | alignée à droite | $1600 |
+| col 2 est |     centrée      |   $12 |
+| zèbre     |    est sympa     |    $1 |
 
 ## Prise en charge multilingue
+
 - 🥣 [Ce site mais en français (seulement cette page et la page d'acceuil sont traduis)](/fr)
 
 ## Anneaux Web
-  - 🈯 {{ webring(prev="#", webring="#", webringName="Anneau Aléatoire", next="#") }}
+
+- 🈯 {{ webring(prev="#", webring="#", webringName="Anneau Aléatoire", next="#") }}
 
 ---
 
@@ -73,6 +74,5 @@ image aléatoire d'un chien[^4]
 
 [^2]: salut toi
 
-[^3]: ceci est une autre note de bas de page.
 
-[^4]: ceci est une note de bas de page très très longue pour tester si une note de bas de page très très longue pose problème ou non. J'espère vivement qu'il n'y a pas de problèmes, mais vous savez parfois les problèmes surgissent de nulle part.
+
