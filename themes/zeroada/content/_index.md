@@ -37,8 +37,8 @@ Discover additional content:
 Stay connected with us:
 
 - Email: [jgll6dij6@mozmail.com](mailto:jgll6dij6@mozmail.com)
-- Code Repositories: [Speyll@GitHub](https://github.com/Speyll)
-- @Speyll anywhere else.
+- Code Repositories: [adaschevici@GitHub](https://github.com/adaschevici)
+- @adaschevici anywhere else.
 
 ## Webrings
 

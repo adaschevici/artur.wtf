@@ -36,8 +36,8 @@ Découvrez du contenu supplémentaire :
 Restez connecté avec nous :
 
 - Email : [jgll6dij6@mozmail.com](mailto:jgll6dij6@mozmail.com)
-- Dépôts de Code : [Speyll@GitHub](https://github.com/Speyll)
-- @Speyll partout ailleurs.
+- Dépôts de Code : [adaschevici@GitHub](https://github.com/adaschevici)
+- @adaschevici partout ailleurs.
 
 ## Anneaux Web
 

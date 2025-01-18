@@ -17,7 +17,7 @@ To get started with Anemone, follow these simple steps:
 
 ```bash
 cd themes
-git clone https://github.com/Speyll/zeroada
+git clone https://github.com/adaschevici/zeroada
 ```
 
 2. Enable Anemone in your `config.toml`:
