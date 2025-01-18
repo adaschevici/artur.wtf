@@ -85,7 +85,7 @@
 {% endif %}
 {% endblock metatags %}
 {% if config.generate_feed %}
-{% block feed %}
+{% block feeds %}
 <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}"> 
 {% endblock feed %}
 {% endif %}
