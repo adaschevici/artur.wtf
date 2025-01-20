@@ -1,6 +1,6 @@
 +++
 title = "How I optimized my blog images using Rust"
-date = 2025-01-22
+date = 2025-01-20
 draft = false
 [taxonomies]
 tags = ["rust", "images", "seo", "performance"]
