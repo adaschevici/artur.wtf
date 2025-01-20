@@ -47,7 +47,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             should_resize: true,
         })
         .collect();
+    let otherext_image_paths: Vec<Params> = glob("content/**/*.webp")?
+        .filter_map(Result::ok)
+        .map(|path| Params {
+            path,
+            should_recreate: args.recreate,
+            ..Default::default()
+        })
+        .collect();
     input_paths.extend(theme_image_paths);
+    input_paths.extend(otherext_image_paths);
     println!("{:?}", input_paths);
     input_paths.into_par_iter().map(handle).collect::<Vec<_>>();
     Ok(())
@@ -123,22 +132,6 @@ fn handle(params: Params) -> AnyResult<()> {
         .ok_or("Failed to get parent directory")
         .unwrap();
 
-    // Create new file names
-    let original_path = parent_dir.join(
-        format!(
-            "{}_backup{}",
-            file_stem,
-            params
-                .path
-                .extension()
-                .and_then(|ext| ext.to_str())
-                .and_then(|ext| Some(format!(".{}", ext)))
-                .unwrap_or_else(|| "No extension".to_string())
-        )
-        .as_str(),
-    );
-
-    // println!("Backup path: {:?}", backup_path);
     let avif_file_path = parent_dir.join(format!("{}.avif", file_stem).as_str()); // Convert to .avif as an example
     let webp_file_path = parent_dir.join(format!("{}.webp", file_stem).as_str()); // Convert to .webp as an example
 
