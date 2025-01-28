@@ -222,9 +222,9 @@ The savings in time by using the caching is quite substantial. The first run of 
 ## Conclusion
 
 - Optimizing images can decrease load on the server up to 70%
+- ... and it also improves performance which is beneficial for SEO
 - Optimizing github workflows can save you a lot of wait time
 - ... and github minutes
-- ... and it also improves performance which is beneficial for SEO
 - While this was interesting to do, I optimized for something that did not move the needle at all, it just made the evaluation in the `Google Search Console` a bit better.
 
 This is what I have to blame my OCD for. I am happy with the result and I learned quite a few things about `rust` and `image` processing. I am also happy that I managed to get the `avif` conversion working as it is a format that is not yet widely supported but is the most efficient format out there.
