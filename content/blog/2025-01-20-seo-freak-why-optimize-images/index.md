@@ -148,7 +148,7 @@ fn convert_to_avif(img: &DynamicImage, output_path: &str) -> AnyResult<()> {
 }
 ```
 
-The reason converting to `avif` was a bit more convoluted was due to the requirement for pixels to be in `rgba` format. I had to convert the image to `rgba` and then convert the pixels to `Rgba` format. This was a bit of a pain but I managed to get it working.
+The reason converting to `avif` was a bit more convoluted was due to the requirement for pixels to be in `rgba` format. I had to convert the image to `rgba` and then convert the pixels to `Rgba` format(thank you libs with different types). This was a bit of a pain but I managed to get it working.
 
 I'm not an image processing expert so the solution was the result of a long conversation with trail and error with `ChatGPT`, then again this is why I love `rust` and how strict it is. It forces you to write code in a way that if it runs it most likely is correct.
 
@@ -182,11 +182,13 @@ One thing I particularly liked was the fact that it is possible to use a relativ
 
 #### Step 4: Caching
 
-Now one thing about `rust` that is a bit of a bummer is that builds take quite some time. I guess that is the price to pay for static memory analysis. The one thing that `github` tends to hold you accountable for is the number of build minutes you use when a workflow runs.
+Now one thing about `rust` that is a bit of a bummer is that builds take quite some time. I guess that is the price to pay for static memory analysis. I would love to do a deep dive at some point on the optimization of rust build times but that is a story for another time.
+
+The one thing that `github` tends to hold you accountable for is the number of build minutes you use when a workflow runs, so having rust install itself, download dependencies and then run a build for the tools can quickly add up.
 
 The optimization for build times covers caching cargo dependencies but also caching the built binary.
 
-I cached most things that I was able to but I am getting mixed results when trying to cache apt packages
+I cached most things that I was able to but I am getting mixed results when trying to cache apt packages. It simply does not seem to work as intended in the naive approach.
 
 ```yaml
 - name: Install OS Dependencies (if needed)
@@ -217,7 +219,7 @@ I cached most things that I was able to but I am getting mixed results when tryi
     key: ${{ runner.os }}-manual-cargo-${{ hashFiles('**/Cargo.lock') }}
 ```
 
-The savings in time by using the caching is quite substantial. The first run of the workflow took 15 minutes, the run that had cached the deps was less than 1 minute. Even with a substantial amount of images this is not likely a bottleneck.
+The savings in time by using the caching is quite substantial. The first run of the workflow took 15 minutes, the run that had cached the deps was less than 1 minute. Even with a substantial amount of images this will most likely not be a bottleneck.
 
 ## Conclusion
 
