@@ -36,6 +36,47 @@ The step by step process looks like this:
 
 - perform caching on the github workflow to avoid spending too many github minutes on the actual conversion
 
+## What's in it for me?
+
+### **1. Storage Cost Savings**
+
+- **AVIF can be ~70% smaller than PNG** while maintaining similar or better quality.
+- If you're storing images on **AWS S3, Google Cloud Storage, DigitalOcean Spaces, or another cloud provider**, reducing storage by **70%** directly cuts storage costs by the same percentage.
+  **Example:**
+  - **100GB of PNGs → ~30GB of AVIF**
+  - If storage costs **$0.023 per GB (AWS S3 Standard)**:
+    - PNG: **$2.30/month**
+    - AVIF: **$0.69/month**
+    - **Savings: ~$1.61 per 100GB/month (~70%)**
+
+### **2. Egress Bandwidth Cost Savings**
+
+- Most cloud providers charge for outbound bandwidth (data transferred to users).
+- **Smaller AVIF files mean lower bandwidth usage, leading to significant savings.**
+- **AVIF reduces bandwidth usage by ~70% compared to PNG.**
+  **Example with AWS CloudFront:**
+  - **Data transfer cost (to the internet):** **$0.085 per GB**
+  - **If you serve 1TB of PNGs per month:**
+    - **PNG: 1TB → $85/month**
+    - **AVIF (70% smaller): 0.3TB → $25.50/month**
+    - **Savings: ~$59.50 per TB/month (~70%)**
+
+### **3. CDN Caching & Requests**
+
+- Many e-commerce sites use a **CDN (Cloudflare, CloudFront, Fastly, etc.)**.
+- Smaller images:
+  - Improve **cache hit ratio** (more images fit in CDN cache).
+  - Reduce **origin fetch requests**, further lowering egress costs.
+  - Speed up load times, improving user experience.
+
+### **Total Cost Savings Estimate**
+
+| **Cost Factor**          | **PNG**          | **AVIF** | **Savings**      |
+| ------------------------ | ---------------- | -------- | ---------------- |
+| **Storage (100GB)**      | $2.30            | $0.69    | **$1.61 (70%)**  |
+| **Egress (1TB/month)**   | $85.00           | $25.50   | **$59.50 (70%)** |
+| **Total Savings per TB** | **$87.11/month** |          |                  |
+
 ## The Playbook
 
 #### Step 1: Shortcode
