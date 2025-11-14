@@ -16,8 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository and Submodules 🚀
         uses: actions/checkout@v3
+        with:
+          # This line is the crucial addition.
+          # It initializes and updates all submodules recursively.
+          submodules: true
 
       - name: Cache APT packages
         uses: actions/cache@v3

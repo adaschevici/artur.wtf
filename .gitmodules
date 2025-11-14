@@ -1,0 +1,3 @@
+[submodule "themes/zeroada"]
+	path = themes/zeroada
+	url = https://github.com/adaschevici/zeroada
