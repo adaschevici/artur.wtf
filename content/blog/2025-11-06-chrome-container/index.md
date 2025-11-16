@@ -578,7 +578,7 @@ Haven't added any specific security protocols so don't run this in production wi
 ## WTF moments (and fixes)
 
 - Had a bunch a pain with the `chromium` remote debugging port as it would not bind to `0.0.0.0:2222` on the container so I had to add `socat` to forward the port. When trying to connect to the remote debugging port of chromium i was getting a connection reset by peer error. Turns out chromium only binds to localhost inside the container unless you use `socat` to forward the port.
-- When the browser was not launching inside the container, I thought I messed up but, any kind of `--headless` flags should probably be omitted when running with VNC, otherwise the browser will not show up in the VNC session.
+- When the browser was not launching inside the container, I thought I messed up, but, as it turns out, any kind of `--headless` flags should probably be omitted when running with VNC, otherwise the browser will not show up in the VNC session.
 - this is a hack and probably you can fix it in a better way, but I am lazy, so 2MB of overhead on alpine is me adding bash. I used bash to start chrome with the wrapper script, add the flags all that jazz.
 - in my first attempt I tried to use chrome, but there were some silly issues with arm64 builds, so I switched to chromium which has better support for arm64.
 

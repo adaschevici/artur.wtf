@@ -1,9 +1,15 @@
-.PHONY: images-redo
-images-redo: ## Create webp and avif images 
-	cargo run --manifest-path ./helpers/image-optimizer/Cargo.toml -- --recreate
+RECREATE ?= false
 
-.PHONY: images
+# Conditionally set the RECREATE_FLAG variable
+ifeq ($(RECREATE),true)
+	RECREATE_FLAG = --recreate
+else
+	RECREATE_FLAG = 
+endif
+
+.PHONY: images-redo images images-watch
 images: ## Create webp and avif images 
-	cargo run --manifest-path ./helpers/image-optimizer/Cargo.toml
+	cargo run --manifest-path ./helpers/image-optimizer/Cargo.toml -- $(RECREATE_FLAG)
 
-.PHONY: images-watch
+images-watch:
+	@echo "Watching for image changes..."
