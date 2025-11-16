@@ -1,7 +1,7 @@
 +++
 title = "Rusty puppets, Websockets and Voyeurism (part II): Driving Chromium in Docker with a Window"
-date = 2025-11-06
-draft = true
+date = 2025-11-17
+draft = false
 [taxonomies]
 tags = ["rust", "docker", "containers", "chrome", "chromium", "arm64"]
 +++
