@@ -130,7 +130,7 @@ jobs:
             echo "Cloudflare Pages project 'artur-wtf' already exists."
           else
             echo "Creating Cloudflare Pages project 'artur-wtf'..."
-            wrangler pages project create artur-wtf --production-branch main --accept-tos
+            wrangler pages project create artur-wtf --production-branch main
           fi
 
       - name: Publish to Cloudflare Pages
