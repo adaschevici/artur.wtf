@@ -117,12 +117,28 @@ jobs:
       - name: Install Wrangler CLI
         run: npm install -g wrangler
 
+      - name: Ensure Cloudflare Pages project exists
+        if: >
+          github.ref == 'refs/heads/main' &&
+          (github.event_name == 'workflow_dispatch' ||
+           steps.changes.outputs.deploy == 'true')
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          # Check if the project exists
+          if wrangler pages project list | grep -q '^artur-wtf$'; then
+            echo "Cloudflare Pages project 'artur-wtf' already exists."
+          else
+            echo "Creating Cloudflare Pages project 'artur-wtf'..."
+            wrangler pages project create artur-wtf --production-branch main --accept-tos
+          fi
+
       - name: Publish to Cloudflare Pages
         if: >
           github.ref == 'refs/heads/main' &&
           (github.event_name == 'workflow_dispatch' ||
            steps.changes.outputs.deploy == 'true')
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_2 }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           wrangler pages deploy public --project-name=artur-wtf --branch=main
