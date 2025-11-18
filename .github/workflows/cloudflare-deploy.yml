@@ -41,6 +41,10 @@ jobs:
               - 'content/**'
               - 'templates/**'
               - 'static/**'
+            images:
+              - 'content/**/*.{png,jpg,jpeg,gif,webp,avif,svg}'
+              - 'templates/**/*.{png,jpg,jpeg,gif,webp,avif,svg}'
+              - 'static/**/*.{png,jpg,jpeg,gif,webp,avif,svg}'
 
       - name: Install OS Dependencies (if needed)
         run: |
@@ -52,6 +56,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends $(cat apt-packages.txt)
 
       - name: Cache Rust toolchain
+        if: steps.changes.outputs.images == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.rustup
@@ -60,6 +65,7 @@ jobs:
             ${{ runner.os }}-rustup-
 
       - name: Install Rust
+        if: steps.changes.outputs.images == 'true'
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           rustup toolchain install nightly
@@ -67,12 +73,14 @@ jobs:
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
 
       - name: Verify Rust Installation
+        if: steps.changes.outputs.images == 'true'
         run: |
           rustup --version
           rustc --version
           cargo --version
 
       - name: Cache Cargo dependencies
+        if: steps.changes.outputs.images == 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -82,10 +90,12 @@ jobs:
           key: ${{ runner.os }}-manual-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Build CLI tool
+        if: steps.changes.outputs.images == 'true'
         run: |
           cargo build --manifest-path ./helpers/image-optimizer/Cargo.toml --release --verbose
 
       - name: Perform the optimization
+        if: steps.changes.outputs.images == 'true'
         run: ./helpers/image-optimizer/target/release/image-optimizer
 
       - name: Install Zola
@@ -102,8 +112,11 @@ jobs:
         run: npm install -g wrangler
 
       - name: Publish to Cloudflare Pages
-        if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/main' && steps.changes.outputs.deploy == 'true')
+        if: >
+          github.ref == 'refs/heads/main' &&
+          (github.event_name == 'workflow_dispatch' ||
+           steps.changes.outputs.deploy == 'true')
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_2 }}
         run: |
           wrangler pages deploy public --project-name=artur-wtf --branch=main
