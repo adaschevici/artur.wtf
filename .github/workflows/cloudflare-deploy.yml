@@ -46,6 +46,12 @@ jobs:
               - 'templates/**/*.{png,jpg,jpeg,gif,webp,avif,svg}'
               - 'static/**/*.{png,jpg,jpeg,gif,webp,avif,svg}'
 
+      - name: Debug filters
+        run: |
+          echo "images:       ${{ steps.changes.outputs.images }}"
+          echo "images_count: ${{ steps.changes.outputs.images_count }}"
+          echo "images_files: ${{ steps.changes.outputs.images_files }}"
+
       - name: Install OS Dependencies (if needed)
         run: |
           # Create a file listing your required packages, one per line.
