@@ -17,19 +17,29 @@ jobs:
 
     steps:
       - name: Checkout repository and Submodules 🚀
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           # This line is the crucial addition.
           # It initializes and updates all submodules recursively.
           submodules: true
 
       - name: Cache APT packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /var/cache/apt/archives/*.deb
           key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-packages.txt') }}
           restore-keys: |
             ${{ runner.os }}-apt-cache-
+
+      - name: Determine if deploy is needed
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            deploy:
+              - 'content/**'
+              - 'templates/**'
+              - 'static/**'
 
       - name: Install OS Dependencies (if needed)
         run: |
@@ -41,7 +51,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends $(cat apt-packages.txt)
 
       - name: Cache Rust toolchain
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.rustup
           key: ${{ runner.os }}-rustup-${{ hashFiles('rust-toolchain') }}
@@ -62,7 +72,7 @@ jobs:
           cargo --version
 
       - name: Cache Cargo dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/registry
@@ -91,6 +101,7 @@ jobs:
         run: npm install -g wrangler
 
       - name: Publish to Cloudflare Pages
+        if: steps.changes.outputs.deploy == 'true' && github.ref == 'refs/heads/main'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
